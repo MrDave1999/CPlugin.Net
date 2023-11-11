@@ -1,3 +1,3 @@
 # CPlugin.Net.Attributes
 
-A simple package that includes an attribute to be used by plugins.
+A simple library that includes the `PluginAttribute` type to be used by plugins.

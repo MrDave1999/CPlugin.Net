@@ -1,3 +1,3 @@
 # CPlugin.Net
 
-A simple package that implements a plugin loader.
+A simple library that implements a plugin loader for .NET (5.0+).
