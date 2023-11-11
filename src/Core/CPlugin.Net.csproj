@@ -10,11 +10,11 @@
     <PackageIcon>plugin-icon-nuget.png</PackageIcon>
     <PackageProjectUrl>https://github.com/MrDave1999/CPlugin.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MrDave1999/CPlugin.Net</RepositoryUrl>
-    <PackageTags>plugins, addons, plugin, plug-in, plugin-architecture</PackageTags>
+    <PackageTags>plugins, addons, plugin, plug-in, plugin-architecture, plugin-loader</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Description>
-      A simple package that implements a plugin loader for .NET Core.
+      A simple package that implements a plugin loader for .NET (5.0+).
     </Description>
     <Version>0.1.0-alpha</Version>
   </PropertyGroup>

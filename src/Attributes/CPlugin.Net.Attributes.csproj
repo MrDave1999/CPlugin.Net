@@ -16,7 +16,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Description>
-      A simple package that includes an attribute to be used by plugins.
+      A simple package that includes the PluginAttribute type to be used by plugins.
     </Description>
     <Version>0.1.0-alpha</Version>
   </PropertyGroup>
