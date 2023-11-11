@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <TargetFramework></TargetFramework>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
     <RootNamespace>CPlugin.Net</RootNamespace>
     <PackageId>CPlugin.Net</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
