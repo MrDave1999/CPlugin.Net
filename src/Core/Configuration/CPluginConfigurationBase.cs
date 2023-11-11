@@ -22,7 +22,7 @@ public abstract class CPluginConfigurationBase
     /// </remarks>
     public abstract IEnumerable<string> GetPluginFiles();
 
-    protected string GetPluginPath(string pluginFile)
+    protected static string GetPluginPath(string pluginFile)
     {
         bool isNotPlugin = !Path.GetExtension(pluginFile).Equals(".dll");
         if (isNotPlugin)
