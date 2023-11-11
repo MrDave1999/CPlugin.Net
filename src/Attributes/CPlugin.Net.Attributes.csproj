@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>CPlugin.Net</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <PackageId>CPlugin.Net.Attributes</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Dave Roman</Authors>
+    <Copyright>Copyright (c) Dave Roman</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>plugin-icon-nuget.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/MrDave1999/CPlugin.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MrDave1999/CPlugin.Net</RepositoryUrl>
+    <PackageTags>plugins, addons, plugin, plug-in, plugin-architecture</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <Description>
+      A simple package that includes an attribute to be used by plugins.
+    </Description>
+    <Version>0.1.0-alpha</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\plugin-icon-nuget.png" Pack="True" PackagePath="" />
+    <None Include="README.md" Pack="True" PackagePath="" />
+    <None Include="..\..\LICENSE" Pack="True" PackagePath="" />
+  </ItemGroup>
+
+</Project>
