@@ -14,7 +14,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Description>
-      A simple package that implements a plugin loader for .NET (5.0+).
+      A simple package that implements a plugin loader for .NET.
     </Description>
     <Version>0.1.0-alpha</Version>
   </PropertyGroup>
