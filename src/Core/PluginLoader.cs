@@ -26,8 +26,16 @@ public static class PluginLoader
     /// </summary>
     /// <remarks>This allows to get the plugin files from a json or .env file.</remarks>
     /// <param name="configuration">A configuration source for the loader.</param>
+    /// <exception cref="ArgumentNullException">
+    /// <c>configuration</c> is <c>null</c>.
+    /// </exception>
     public static void SetConfiguration(CPluginConfigurationBase configuration)
-        => s_assemblyFiles = configuration.GetPluginFiles();
+    {
+        if (configuration is null)
+            throw new ArgumentNullException(nameof(configuration));
+
+        s_assemblyFiles = configuration.GetPluginFiles();
+    }
 
     /// <summary>
     /// Loads the plugins together with the specified contract.
