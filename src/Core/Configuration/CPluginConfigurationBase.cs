@@ -22,6 +22,14 @@ public abstract class CPluginConfigurationBase
     /// </remarks>
     public abstract IEnumerable<string> GetPluginFiles();
 
+    /// <summary>
+    /// Gets the full path of a plugin file.
+    /// </summary>
+    /// <param name="pluginFile">The name of a plugin file.</param>
+    /// <returns>The full path of a plugin file.</returns>
+    /// <exception cref="ArgumentException">
+    /// <c>pluginFile</c> does not have .dll extension.
+    /// </exception>
     protected static string GetPluginPath(string pluginFile)
     {
         bool isNotPlugin = !Path.GetExtension(pluginFile).Equals(".dll");
