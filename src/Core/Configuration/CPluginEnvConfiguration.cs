@@ -1,4 +1,8 @@
-﻿namespace CPlugin.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CPlugin.Net;
 
 /// <summary>
 /// Represents a configuration to get the plugin files from an environment variable.

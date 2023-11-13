@@ -1,4 +1,6 @@
-﻿namespace CPlugin.Net;
+﻿using System;
+
+namespace CPlugin.Net;
 
 /// <summary>
 /// This attribute is required so that the plugin loader can create the instance of the type that implements the contract.
