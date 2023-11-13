@@ -22,6 +22,9 @@ public class CPluginJsonConfiguration : CPluginConfigurationBase
     /// <summary>
     /// Initializes a new instance of the <see cref="CPluginJsonConfiguration"/> class.
     /// </summary>
+    /// <param name="configuration">
+    /// A set of key/value application configuration properties.
+    /// </param>
     /// <exception cref="ArgumentNullException">
     /// <c>configuration</c> is <c>null</c>.
     /// </exception>

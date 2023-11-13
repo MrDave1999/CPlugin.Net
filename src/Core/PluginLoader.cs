@@ -50,6 +50,9 @@ public static class PluginLoader
     /// An instance of type <see cref="IEnumerable{TContract}"/> that contains the instances
     /// that implement the contract specified by <typeparamref name="TContract"/>.
     /// </returns>
+    /// <exception cref="InvalidOperationException">
+    /// If a plugin does not use the <see cref="PluginAttribute"/> type at the assembly level.
+    /// </exception>
     public static IEnumerable<TContract> Load<TContract>() where TContract : class
     {
         var contracts = new List<TContract>();

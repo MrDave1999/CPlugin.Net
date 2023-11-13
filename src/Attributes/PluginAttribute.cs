@@ -4,6 +4,8 @@ namespace CPlugin.Net;
 
 /// <summary>
 /// This attribute is required so that the plugin loader can create the instance of the type that implements the contract.
+/// <para>Example:</para>
+/// <c>[assembly: Plugin(typeof(PluginStartup))]</c>
 /// </summary>
 [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
 public class PluginAttribute : Attribute
