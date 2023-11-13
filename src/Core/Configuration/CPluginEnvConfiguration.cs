@@ -10,7 +10,7 @@ namespace CPlugin.Net;
 /// <remarks>
 /// The variable must be called <c>PLUGINS</c> and its value must be a string separated by spaces.
 /// <para>Example:</para>
-/// PLUGINS=MyPlugin1.dll MyPlugin2.dll
+/// <c>PLUGINS=MyPlugin1.dll MyPlugin2.dll</c>
 /// </remarks>
 public class CPluginEnvConfiguration : CPluginConfigurationBase
 {

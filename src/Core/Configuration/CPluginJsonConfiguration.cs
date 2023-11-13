@@ -10,12 +10,10 @@ namespace CPlugin.Net;
 /// </summary>
 /// <remarks>
 /// The section must be called <c>Plugins</c> and its value must be an array of strings.
-/// <para>
-/// Example:
-/// <para>{</para>
-/// "Plugins": [ "MyPlugin1.dll", "MyPlugin2.dll" ]
-/// <para>}</para>
-/// </para>
+/// <para>Example:</para>
+/// <c>
+/// { "Plugins": [ "MyPlugin1.dll", "MyPlugin2.dll" ] }
+/// </c>
 /// </remarks>
 public class CPluginJsonConfiguration : CPluginConfigurationBase
 {
