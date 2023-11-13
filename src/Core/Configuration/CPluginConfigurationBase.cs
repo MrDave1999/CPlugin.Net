@@ -19,8 +19,9 @@ public abstract class CPluginConfigurationBase
     /// Failed to extract plugin names.
     /// </exception>
     /// <remarks>
-    /// Plugin files must be in the <c>plugins</c> directory from current directory 
+    /// Plugin files must be in the <c>plugins</c> directory of the current directory 
     /// where the host application is running.
+    /// <para>Each plugin file must have a <c>.dll</c> extension and must be in its own directory.</para>
     /// <para>Example:</para>
     /// <c>/HostApp/bin/Debug/net7.0/plugins/MyPlugin1/MyPlugin1.dll</c>
     /// </remarks>
