@@ -4,7 +4,10 @@
       "src": [
         {
           "src": "..",
-          "files": ["src/Core/**.csproj"]
+          "files": [
+            "src/Core/**.csproj", 
+            "src/Attributes/**.csproj"
+          ]
         }
       ],
       "dest": "api",
