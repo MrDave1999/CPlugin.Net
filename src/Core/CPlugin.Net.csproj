@@ -11,7 +11,7 @@
     <Copyright>Copyright (c) Dave Roman</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>plugin-icon-nuget.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/MrDave1999/CPlugin.Net</PackageProjectUrl>
+    <PackageProjectUrl>https://mrdave1999.github.io/CPlugin.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MrDave1999/CPlugin.Net</RepositoryUrl>
     <PackageTags>plugins, addons, plugin, plug-in, plugin-architecture, plugin-loader</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
