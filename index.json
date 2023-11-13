@@ -1,0 +1,92 @@
+{
+  "api/CPlugin.Net.CPluginConfigurationBase.GetPluginFiles.html": {
+    "href": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginFiles.html",
+    "title": "Method GetPluginFiles | CPlugin.Net",
+    "keywords": "Method GetPluginFiles | Improve this Doc View Source GetPluginFiles() Gets the full path to each plugin file from a configuration source. Declaration public abstract IEnumerable<string> GetPluginFiles() Returns Type Description IEnumerable < String > A collection of plugin files that also contains the paths. Remarks Plugin files must be in the plugins directory of the current directory where the host application is running. Each plugin file must have a .dll extension and must be in its own directory. Example: /HostApp/bin/Debug/net7.0/plugins/MyPlugin1/MyPlugin1.dll Exceptions Type Condition InvalidOperationException Failed to extract plugin names."
+  },
+  "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html": {
+    "href": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html",
+    "title": "Method GetPluginPath | CPlugin.Net",
+    "keywords": "Method GetPluginPath | Improve this Doc View Source GetPluginPath(String) Gets the full path of a plugin file. Declaration protected static string GetPluginPath(string pluginFile) Parameters Type Name Description String pluginFile The name of a plugin file. Returns Type Description String The full path of a plugin file. Exceptions Type Condition ArgumentException pluginFile does not have .dll extension."
+  },
+  "api/CPlugin.Net.CPluginConfigurationBase.html": {
+    "href": "api/CPlugin.Net.CPluginConfigurationBase.html",
+    "title": "Class CPluginConfigurationBase | CPlugin.Net",
+    "keywords": "Class CPluginConfigurationBase Represents a configuration source to obtain the plugin files. Inheritance Object CPluginConfigurationBase CPluginEnvConfiguration CPluginJsonConfiguration Inherited Members Object.Equals(Object) Object.Equals(Object, Object) Object.GetHashCode() Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Object.ToString() Namespace : CPlugin.Net Assembly : CPlugin.Net.dll Syntax public abstract class CPluginConfigurationBase Methods Name Description GetPluginFiles() Gets the full path to each plugin file from a configuration source. GetPluginPath(String) Gets the full path of a plugin file."
+  },
+  "api/CPlugin.Net.CPluginEnvConfiguration.-ctor.html": {
+    "href": "api/CPlugin.Net.CPluginEnvConfiguration.-ctor.html",
+    "title": "Constructor CPluginEnvConfiguration | CPlugin.Net",
+    "keywords": "Constructor CPluginEnvConfiguration | Improve this Doc View Source CPluginEnvConfiguration() Initializes a new instance of the CPluginEnvConfiguration class. Declaration public CPluginEnvConfiguration()"
+  },
+  "api/CPlugin.Net.CPluginEnvConfiguration.GetPluginFiles.html": {
+    "href": "api/CPlugin.Net.CPluginEnvConfiguration.GetPluginFiles.html",
+    "title": "Method GetPluginFiles | CPlugin.Net",
+    "keywords": "Method GetPluginFiles | Improve this Doc View Source GetPluginFiles() Gets the full path to each plugin file from a configuration source. Declaration public override IEnumerable<string> GetPluginFiles() Returns Type Description IEnumerable < String > A collection of plugin files that also contains the paths. Overrides CPluginConfigurationBase.GetPluginFiles() Remarks Plugin files must be in the plugins directory of the current directory where the host application is running. Each plugin file must have a .dll extension and must be in its own directory. Example: /HostApp/bin/Debug/net7.0/plugins/MyPlugin1/MyPlugin1.dll Exceptions Type Condition InvalidOperationException Failed to extract plugin names."
+  },
+  "api/CPlugin.Net.CPluginEnvConfiguration.html": {
+    "href": "api/CPlugin.Net.CPluginEnvConfiguration.html",
+    "title": "Class CPluginEnvConfiguration | CPlugin.Net",
+    "keywords": "Class CPluginEnvConfiguration Represents a configuration to get the plugin files from an environment variable. Inheritance Object CPluginConfigurationBase CPluginEnvConfiguration Inherited Members CPluginConfigurationBase.GetPluginPath(String) Object.Equals(Object) Object.Equals(Object, Object) Object.GetHashCode() Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Object.ToString() Namespace : CPlugin.Net Assembly : CPlugin.Net.dll Syntax public class CPluginEnvConfiguration : CPluginConfigurationBase Remarks The variable must be called PLUGINS and its value must be a string separated by spaces. Example: PLUGINS=MyPlugin1.dll MyPlugin2.dll Constructors Name Description CPluginEnvConfiguration() Initializes a new instance of the CPluginEnvConfiguration class. Methods Name Description GetPluginFiles() Gets the full path to each plugin file from a configuration source."
+  },
+  "api/CPlugin.Net.CPluginJsonConfiguration.-ctor.html": {
+    "href": "api/CPlugin.Net.CPluginJsonConfiguration.-ctor.html",
+    "title": "Constructor CPluginJsonConfiguration | CPlugin.Net",
+    "keywords": "Constructor CPluginJsonConfiguration | Improve this Doc View Source CPluginJsonConfiguration(IConfiguration) Initializes a new instance of the CPluginJsonConfiguration class. Declaration public CPluginJsonConfiguration(IConfiguration configuration) Parameters Type Name Description IConfiguration configuration A set of key/value application configuration properties. Exceptions Type Condition ArgumentNullException configuration is null ."
+  },
+  "api/CPlugin.Net.CPluginJsonConfiguration.GetPluginFiles.html": {
+    "href": "api/CPlugin.Net.CPluginJsonConfiguration.GetPluginFiles.html",
+    "title": "Method GetPluginFiles | CPlugin.Net",
+    "keywords": "Method GetPluginFiles | Improve this Doc View Source GetPluginFiles() Gets the full path to each plugin file from a configuration source. Declaration public override IEnumerable<string> GetPluginFiles() Returns Type Description IEnumerable < String > A collection of plugin files that also contains the paths. Overrides CPluginConfigurationBase.GetPluginFiles() Remarks Plugin files must be in the plugins directory of the current directory where the host application is running. Each plugin file must have a .dll extension and must be in its own directory. Example: /HostApp/bin/Debug/net7.0/plugins/MyPlugin1/MyPlugin1.dll Exceptions Type Condition InvalidOperationException Failed to extract plugin names."
+  },
+  "api/CPlugin.Net.CPluginJsonConfiguration.html": {
+    "href": "api/CPlugin.Net.CPluginJsonConfiguration.html",
+    "title": "Class CPluginJsonConfiguration | CPlugin.Net",
+    "keywords": "Class CPluginJsonConfiguration Represents a configuration to get the plugin files from a json. Inheritance Object CPluginConfigurationBase CPluginJsonConfiguration Inherited Members CPluginConfigurationBase.GetPluginPath(String) Object.Equals(Object) Object.Equals(Object, Object) Object.GetHashCode() Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Object.ToString() Namespace : CPlugin.Net Assembly : CPlugin.Net.dll Syntax public class CPluginJsonConfiguration : CPluginConfigurationBase Remarks The section must be called Plugins and its value must be an array of strings. Example: { \"Plugins\": [ \"MyPlugin1.dll\", \"MyPlugin2.dll\" ] } Constructors Name Description CPluginJsonConfiguration(IConfiguration) Initializes a new instance of the CPluginJsonConfiguration class. Methods Name Description GetPluginFiles() Gets the full path to each plugin file from a configuration source."
+  },
+  "api/CPlugin.Net.html": {
+    "href": "api/CPlugin.Net.html",
+    "title": "Namespace CPlugin.Net | CPlugin.Net",
+    "keywords": "Namespace CPlugin.Net Classes CPluginConfigurationBase Represents a configuration source to obtain the plugin files. CPluginEnvConfiguration Represents a configuration to get the plugin files from an environment variable. CPluginJsonConfiguration Represents a configuration to get the plugin files from a json. PluginAttribute This attribute is required so that the plugin loader can create the instance of the type that implements the contract. Example: [assembly: Plugin(typeof(PluginStartup))] PluginLoader Represents the loader of plug-in assemblies."
+  },
+  "api/CPlugin.Net.PluginAttribute.-ctor.html": {
+    "href": "api/CPlugin.Net.PluginAttribute.-ctor.html",
+    "title": "Constructor PluginAttribute | CPlugin.Net",
+    "keywords": "Constructor PluginAttribute | Improve this Doc View Source PluginAttribute(Type) Initializes a new instance of the PluginAttribute class. Declaration public PluginAttribute(Type pluginType) Parameters Type Name Description Type pluginType An instance of type Type that implements the contract. Exceptions Type Condition ArgumentNullException pluginType is null . ArgumentException pluginType is not instantiable."
+  },
+  "api/CPlugin.Net.PluginAttribute.html": {
+    "href": "api/CPlugin.Net.PluginAttribute.html",
+    "title": "Class PluginAttribute | CPlugin.Net",
+    "keywords": "Class PluginAttribute This attribute is required so that the plugin loader can create the instance of the type that implements the contract. Example: [assembly: Plugin(typeof(PluginStartup))] Inheritance Object Attribute PluginAttribute Inherited Members Attribute.Equals(Object) Attribute.GetCustomAttribute(Assembly, Type) Attribute.GetCustomAttribute(Assembly, Type, Boolean) Attribute.GetCustomAttribute(MemberInfo, Type) Attribute.GetCustomAttribute(MemberInfo, Type, Boolean) Attribute.GetCustomAttribute(Module, Type) Attribute.GetCustomAttribute(Module, Type, Boolean) Attribute.GetCustomAttribute(ParameterInfo, Type) Attribute.GetCustomAttribute(ParameterInfo, Type, Boolean) Attribute.GetCustomAttributes(Assembly) Attribute.GetCustomAttributes(Assembly, Boolean) Attribute.GetCustomAttributes(Assembly, Type) Attribute.GetCustomAttributes(Assembly, Type, Boolean) Attribute.GetCustomAttributes(MemberInfo) Attribute.GetCustomAttributes(MemberInfo, Boolean) Attribute.GetCustomAttributes(MemberInfo, Type) Attribute.GetCustomAttributes(MemberInfo, Type, Boolean) Attribute.GetCustomAttributes(Module) Attribute.GetCustomAttributes(Module, Boolean) Attribute.GetCustomAttributes(Module, Type) Attribute.GetCustomAttributes(Module, Type, Boolean) Attribute.GetCustomAttributes(ParameterInfo) Attribute.GetCustomAttributes(ParameterInfo, Boolean) Attribute.GetCustomAttributes(ParameterInfo, Type) Attribute.GetCustomAttributes(ParameterInfo, Type, Boolean) Attribute.GetHashCode() Attribute.IsDefaultAttribute() Attribute.IsDefined(Assembly, Type) Attribute.IsDefined(Assembly, Type, Boolean) Attribute.IsDefined(MemberInfo, Type) Attribute.IsDefined(MemberInfo, Type, Boolean) Attribute.IsDefined(Module, Type) Attribute.IsDefined(Module, Type, Boolean) Attribute.IsDefined(ParameterInfo, Type) Attribute.IsDefined(ParameterInfo, Type, Boolean) Attribute.Match(Object) Attribute.TypeId Object.Equals(Object, Object) Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Object.ToString() Namespace : CPlugin.Net Assembly : CPlugin.Net.Attributes.dll Syntax [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)] public class PluginAttribute : Attribute Constructors Name Description PluginAttribute(Type) Initializes a new instance of the PluginAttribute class. Properties Name Description PluginType Gets an instance of type Type that implements the contract."
+  },
+  "api/CPlugin.Net.PluginAttribute.PluginType.html": {
+    "href": "api/CPlugin.Net.PluginAttribute.PluginType.html",
+    "title": "Property PluginType | CPlugin.Net",
+    "keywords": "Property PluginType | Improve this Doc View Source PluginType Gets an instance of type Type that implements the contract. Declaration public Type PluginType { get; } Property Value Type Description Type"
+  },
+  "api/CPlugin.Net.PluginLoader.Assemblies.html": {
+    "href": "api/CPlugin.Net.PluginLoader.Assemblies.html",
+    "title": "Property Assemblies | CPlugin.Net",
+    "keywords": "Property Assemblies | Improve this Doc View Source Assemblies Gets the plugin assemblies. Declaration public static IEnumerable<Assembly> Assemblies { get; } Property Value Type Description IEnumerable < Assembly >"
+  },
+  "api/CPlugin.Net.PluginLoader.html": {
+    "href": "api/CPlugin.Net.PluginLoader.html",
+    "title": "Class PluginLoader | CPlugin.Net",
+    "keywords": "Class PluginLoader Represents the loader of plug-in assemblies. Inheritance Object PluginLoader Inherited Members Object.Equals(Object) Object.Equals(Object, Object) Object.GetHashCode() Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Object.ToString() Namespace : CPlugin.Net Assembly : CPlugin.Net.dll Syntax public static class PluginLoader Properties Name Description Assemblies Gets the plugin assemblies. Methods Name Description Load<TContract>() Loads the plugins together with the specified contract. SetConfiguration(CPluginConfigurationBase) Sets a configuration source for the loader."
+  },
+  "api/CPlugin.Net.PluginLoader.Load.html": {
+    "href": "api/CPlugin.Net.PluginLoader.Load.html",
+    "title": "Method Load | CPlugin.Net",
+    "keywords": "Method Load | Improve this Doc View Source Load<TContract>() Loads the plugins together with the specified contract. Declaration public static IEnumerable<TContract> Load<TContract>() where TContract : class Returns Type Description IEnumerable <TContract> An instance of type IEnumerable<T> that contains the instances that implement the contract specified by TContract . Type Parameters Name Description TContract The type of contract shared between the host application and the plugins. Exceptions Type Condition InvalidOperationException If a plugin does not use the PluginAttribute type at the assembly level."
+  },
+  "api/CPlugin.Net.PluginLoader.SetConfiguration.html": {
+    "href": "api/CPlugin.Net.PluginLoader.SetConfiguration.html",
+    "title": "Method SetConfiguration | CPlugin.Net",
+    "keywords": "Method SetConfiguration | Improve this Doc View Source SetConfiguration(CPluginConfigurationBase) Sets a configuration source for the loader. Declaration public static void SetConfiguration(CPluginConfigurationBase configuration) Parameters Type Name Description CPluginConfigurationBase configuration A configuration source for the loader. Remarks This allows to get the plugin files from a json or .env file. Exceptions Type Condition ArgumentNullException configuration is null ."
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "CPlugin.Net | CPlugin.Net",
+    "keywords": "CPlugin.Net A simple library that implements a plugin loader for .NET. It also includes a PluginAttribute type to be used by plugins."
+  }
+}
