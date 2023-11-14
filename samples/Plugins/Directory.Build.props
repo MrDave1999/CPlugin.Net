@@ -1,0 +1,32 @@
+<!-- Global properties for all plugins. -->
+<Project>
+  <!-- Import global properties from root directory. -->
+  <Import Project="..\..\Directory.build.props" />
+  <PropertyGroup>
+    <!-- 
+      Indicates that an assembly is a dynamically loaded component. 
+      This will copy the NuGet packages to the output directory.
+    -->
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\Contracts.csproj">
+      <!-- This tells MSBuild not to copy Contracts.dll to the plug-in output directory. -->
+      <Private>false</Private>
+      <!-- 
+        This setting has the same effect as <Private>false</Private> but works on package references 
+        that the Contracts project or one of its dependencies may include.
+      -->
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Attributes\CPlugin.Net.Attributes.csproj">
+      <!-- This tells MSBuild not to copy CPlugin.Net.Attributes.dll to the plug-in output directory. -->
+      <Private>false</Private>
+      <!-- 
+        This setting has the same effect as <Private>false</Private> but works on package references 
+        that the CPlugin.Net.Attributes project or one of its dependencies may include.
+      -->
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
