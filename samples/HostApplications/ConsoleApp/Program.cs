@@ -5,6 +5,7 @@ Console.WriteLine();
 
 var envConfiguration = new CPluginEnvConfiguration();
 PluginLoader.SetConfiguration(envConfiguration);
+// Loads the plugins from the .env file.
 var contracts = PluginLoader.Load<ICommand>();
 foreach(ICommand contract in contracts)
 {
