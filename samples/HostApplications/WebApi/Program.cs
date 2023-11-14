@@ -13,7 +13,7 @@ foreach(IWebStartup contract in contracts)
 IMvcBuilder mvcBuilder = builder.Services.AddControllers();
 foreach (Assembly assembly in PluginLoader.Assemblies)
 {
-    // This allows to register the controller for each loaded assembly.
+    // This allows to register the controllers for each loaded assembly.
     mvcBuilder.PartManager.ApplicationParts.Add(new AssemblyPart(assembly));
 }
 
