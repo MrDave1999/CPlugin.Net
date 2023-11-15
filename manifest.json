@@ -17,6 +17,18 @@
       "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
       "output": {
         ".html": {
+          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html",
+          "hash": "0fI9F7X2gSsNrz2jYOzQZpakmSL5ylEBZQiuF6cCCOc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.html",
           "hash": "lOEAZd2yb45wnO1bo4oVlpags8GtDXAzpayhH9rd+Qs="
         }
@@ -30,19 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginFiles.html",
-          "hash": "i6POLtooReTcWnbbUxu72sWqlLd4skIJP2VXU9anDu0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html",
-          "hash": "0fI9F7X2gSsNrz2jYOzQZpakmSL5ylEBZQiuF6cCCOc="
+          "hash": "RcWgKm+A/nkAT7L2KI/eNm0ibocyNMYwgSZn49lbeaQ="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.GetPluginFiles.html",
-          "hash": "vnfkDQYHY89+We66xGAsw2OXAJd9qbvk4iwM3VgfORo="
+          "hash": "o4JoBtPidyQQWTunVKqwl8QSs9Y+Y3O385mlTz1Qi0I="
         }
       },
       "is_incremental": false,
@@ -89,18 +89,6 @@
       "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.html",
-          "hash": "wRQLjyzGcrRAGrPlK/4KXhe7tGznPxmM05jHt6phUB4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.-ctor.html",
           "hash": "s7qxkgzwX3oUSsypKhrV/MHgnYJEHUj2B2NSbcCcYGo="
         }
@@ -113,8 +101,20 @@
       "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
       "output": {
         ".html": {
+          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.html",
+          "hash": "wRQLjyzGcrRAGrPlK/4KXhe7tGznPxmM05jHt6phUB4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.GetPluginFiles.html",
-          "hash": "/KqYv2fMzrlkvzvlBx9+lle3GOmamjQyk+9sTrBwSgk="
+          "hash": "YxBXhddt7RfmqaJ/k3NeNMp8c2GSUiYp9z9bnoXMwhQ="
         }
       },
       "is_incremental": false,
@@ -125,8 +125,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginAttribute.html",
-          "hash": "Mc0nomQWrG47hbdz1n1BcxnXi7L8tOap431q3VlKP3o="
+          "relative_path": "api/CPlugin.Net.PluginAttribute.PluginType.html",
+          "hash": "u3bDjqpcC2YShTD1/cSPFdawGwKQgFg7nMLD1SHA3jM="
         }
       },
       "is_incremental": false,
@@ -149,8 +149,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginAttribute.PluginType.html",
-          "hash": "u3bDjqpcC2YShTD1/cSPFdawGwKQgFg7nMLD1SHA3jM="
+          "relative_path": "api/CPlugin.Net.PluginAttribute.html",
+          "hash": "Mc0nomQWrG47hbdz1n1BcxnXi7L8tOap431q3VlKP3o="
         }
       },
       "is_incremental": false,
@@ -173,8 +173,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginLoader.SetConfiguration.html",
-          "hash": "pgi7dr7lZEZ99Ly1EQNPNxZVa3rrMl+ubagC+Q5wr60="
+          "relative_path": "api/CPlugin.Net.PluginLoader.Load.html",
+          "hash": "pVU36dG8f9KMIux3vUlB8U5krip3cqqQNRNqCZ9os78="
         }
       },
       "is_incremental": false,
@@ -185,8 +185,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginLoader.Load.html",
-          "hash": "c1y8lJnW+6s387vNZQCHqATjlQ3MDA2c4Zgr1ibxTaU="
+          "relative_path": "api/CPlugin.Net.PluginLoader.SetConfiguration.html",
+          "hash": "pgi7dr7lZEZ99Ly1EQNPNxZVa3rrMl+ubagC+Q5wr60="
         }
       },
       "is_incremental": false,
@@ -256,25 +256,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 1,
-          "skipped_file_count": 0
+          "skipped_file_count": 1
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 6,
-          "skipped_file_count": 0
+          "skipped_file_count": 2
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
