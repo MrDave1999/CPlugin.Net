@@ -49,6 +49,9 @@ public static class PluginLoader
     /// <returns>
     /// An instance of type <see cref="IEnumerable{TContract}"/> that contains the instances
     /// that implement the contract specified by <typeparamref name="TContract"/>.
+    /// <para>or</para>
+    /// Returns an empty enumerable when the plugin names could not be obtained from a configuration source.
+    /// <para>This method never returns <c>null</c>.</para>
     /// </returns>
     /// <exception cref="InvalidOperationException">
     /// If a plugin does not use the <see cref="PluginAttribute"/> type at the assembly level.
