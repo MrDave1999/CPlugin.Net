@@ -22,18 +22,11 @@ public class CPluginEnvConfiguration : CPluginConfigurationBase
     /// <inheritdoc />
     public override IEnumerable<string> GetPluginFiles()
     {
-        var recoveredValue = Environment.GetEnvironmentVariable("PLUGINS");
-        if(recoveredValue is null)
-        {
-            var message =
-            """
-            'PLUGINS' environment variable is not set.
-            Please check the export command or the .env file.
-            """;
-            throw new InvalidOperationException(message);
-        }
+        var retrievedValue = Environment.GetEnvironmentVariable("PLUGINS");
+        if(retrievedValue is null)
+            return Enumerable.Empty<string>();
 
-        var pluginFiles = recoveredValue
+        var pluginFiles = retrievedValue
             .Split(" ")
             .Where(pluginFile => !string.IsNullOrWhiteSpace(pluginFile))
             .Select(GetPluginPath);
