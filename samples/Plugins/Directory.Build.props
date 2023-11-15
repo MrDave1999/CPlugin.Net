@@ -10,12 +10,12 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Contracts\Contracts.csproj">
-      <!-- This tells MSBuild not to copy Contracts.dll to the plug-in output directory. -->
+    <ProjectReference Include="..\..\Contracts\Example.Contracts.csproj">
+      <!-- This tells MSBuild not to copy Example.Contracts.dll to the plug-in output directory. -->
       <Private>false</Private>
       <!-- 
         This setting has the same effect as <Private>false</Private> but works on package references 
-        that the Contracts project or one of its dependencies may include.
+        that the Example.Contracts project or one of its dependencies may include.
       -->
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>

@@ -1,4 +1,4 @@
-﻿namespace AppointmentPlugin;
+﻿namespace Example.AppointmentPlugin;
 
 [TranslateResultToActionResult]
 [ApiController]

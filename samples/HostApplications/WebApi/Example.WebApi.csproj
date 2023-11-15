@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Core\CPlugin.Net.csproj" />
-    <ProjectReference Include="..\..\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\..\Contracts\Example.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

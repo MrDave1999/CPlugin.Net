@@ -1,4 +1,4 @@
-namespace WebApi;
+namespace Example.WebApi;
 
 public class WeatherForecast
 {

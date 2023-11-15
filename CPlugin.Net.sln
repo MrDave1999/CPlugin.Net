@@ -7,17 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPlugin.Net.Attributes", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPlugin.Net", "src\Core\CPlugin.Net.csproj", "{116B353F-FC68-4412-8A2D-34DA0BE88060}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "samples\Contracts\Contracts.csproj", "{BBDE7F3C-2A41-40B6-B609-839D09676D0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Contracts", "samples\Contracts\Example.Contracts.csproj", "{BBDE7F3C-2A41-40B6-B609-839D09676D0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "samples\HostApplications\ConsoleApp\ConsoleApp.csproj", "{3E943746-09CD-430E-9BBF-67DBBF9F5CEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.ConsoleApp", "samples\HostApplications\ConsoleApp\Example.ConsoleApp.csproj", "{3E943746-09CD-430E-9BBF-67DBBF9F5CEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "samples\HostApplications\WebApi\WebApi.csproj", "{C221B4F0-857F-4380-B5AD-E4B2BBA65622}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.WebApi", "samples\HostApplications\WebApi\Example.WebApi.csproj", "{C221B4F0-857F-4380-B5AD-E4B2BBA65622}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonPlugin", "samples\Plugins\JsonPlugin\JsonPlugin.csproj", "{C5B8EF73-7DB5-441F-AE38-0988751A896B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.JsonPlugin", "samples\Plugins\JsonPlugin\Example.JsonPlugin.csproj", "{C5B8EF73-7DB5-441F-AE38-0988751A896B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OldJsonPlugin", "samples\Plugins\OldJsonPlugin\OldJsonPlugin.csproj", "{1ADE3B86-00EF-4976-8B67-09B360B149FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.OldJsonPlugin", "samples\Plugins\OldJsonPlugin\Example.OldJsonPlugin.csproj", "{1ADE3B86-00EF-4976-8B67-09B360B149FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentPlugin", "samples\Plugins\AppointmentPlugin\AppointmentPlugin.csproj", "{2832E5C3-660E-49B9-8E62-03B11A8CC6D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.AppointmentPlugin", "samples\Plugins\AppointmentPlugin\Example.AppointmentPlugin.csproj", "{2832E5C3-660E-49B9-8E62-03B11A8CC6D7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DA150C23-F1A9-42CF-899C-6C4E6B940E72}"
 	ProjectSection(SolutionItems) = preProject

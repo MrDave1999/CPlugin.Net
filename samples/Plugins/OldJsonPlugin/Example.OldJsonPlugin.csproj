@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutDir>$(SolutionDir)HostApplications/ConsoleApp/bin/$(Configuration)/$(TargetFramework)/plugins/$(MSBuildProjectName)</OutDir>
+    <OutDir>$(SolutionDir)samples/HostApplications/ConsoleApp/bin/$(Configuration)/$(TargetFramework)/plugins/$(MSBuildProjectName)</OutDir>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 

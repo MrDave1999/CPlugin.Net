@@ -1,6 +1,6 @@
 ﻿[assembly: Plugin(typeof(Startup))]
 
-namespace AppointmentPlugin;
+namespace Example.AppointmentPlugin;
 
 public class Startup : IWebStartup
 {

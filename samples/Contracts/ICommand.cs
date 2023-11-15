@@ -1,4 +1,4 @@
-﻿namespace Contracts;
+﻿namespace Example.Contracts;
 
 public interface ICommand
 {

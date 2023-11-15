@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Contracts;
+namespace Example.Contracts;
 
 public interface IWebStartup
 {

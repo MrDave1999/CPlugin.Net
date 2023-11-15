@@ -1,6 +1,6 @@
 ﻿[assembly: Plugin(typeof(CreateJson))]
 
-namespace OldJsonPlugin;
+namespace Example.OldJsonPlugin;
 
 public class CreateJson : ICommand
 {

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <OutDir>$(SolutionDir)HostApplications/WebApi/bin/$(Configuration)/$(TargetFramework)/plugins/$(MSBuildProjectName)</OutDir>
+    <OutDir>$(SolutionDir)samples/HostApplications/WebApi/bin/$(Configuration)/$(TargetFramework)/plugins/$(MSBuildProjectName)</OutDir>
     <OutputType>Library</OutputType>
     <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
