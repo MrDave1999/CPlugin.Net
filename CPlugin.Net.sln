@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPlugin.Net.Attributes", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPlugin.Net", "src\Core\CPlugin.Net.csproj", "{116B353F-FC68-4412-8A2D-34DA0BE88060}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPlugin.Net.Tests", "tests\CPlugin.Net.Tests.csproj", "{2F9DE570-146C-44E3-BF2F-14CFA5C3803F}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Contracts", "samples\Contracts\Example.Contracts.csproj", "{BBDE7F3C-2A41-40B6-B609-839D09676D0E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.ConsoleApp", "samples\HostApplications\ConsoleApp\Example.ConsoleApp.csproj", "{3E943746-09CD-430E-9BBF-67DBBF9F5CEF}"
@@ -76,6 +78,10 @@ Global
 		{F66A1430-3F32-4E25-8966-54D502D216DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F66A1430-3F32-4E25-8966-54D502D216DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F66A1430-3F32-4E25-8966-54D502D216DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F9DE570-146C-44E3-BF2F-14CFA5C3803F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9DE570-146C-44E3-BF2F-14CFA5C3803F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F9DE570-146C-44E3-BF2F-14CFA5C3803F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F9DE570-146C-44E3-BF2F-14CFA5C3803F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
