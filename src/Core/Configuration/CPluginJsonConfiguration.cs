@@ -39,19 +39,12 @@ public class CPluginJsonConfiguration : CPluginConfigurationBase
     /// <inheritdoc />
     public override IEnumerable<string> GetPluginFiles()
     {
-        var recoveredSection = _configuration.GetSection("Plugins").Get<string[]>();
-        if(recoveredSection is null)
-        {
-            var message =
-            """
-            'Plugins' section not found in json file.
-            Example:
-            {
-                "Plugins": [ "MyPlugin1.dll", "MyPlugin2.dll" ]
-            }
-            """;
-            throw new InvalidOperationException(message);
-        }
-        return recoveredSection.Select(GetPluginPath);
+        var values = _configuration
+            .GetSection("Plugins")
+            .Get<string[]>();
+
+        return values is null ? 
+            Enumerable.Empty<string>() :
+            values.Select(GetPluginPath);
     }
 }

@@ -13,11 +13,11 @@ public abstract class CPluginConfigurationBase
     /// Gets the full path to each plugin file from a configuration source.
     /// </summary>
     /// <returns>
-    /// A collection of plugin files that also contains the paths.
+    /// A collection of plugin files that also contains the paths;
+    /// <para>or</para>
+    /// Returns an empty enumerable when the plugin files could not be obtained.
+    /// <para>This method never returns <c>null</c>.</para>
     /// </returns>
-    /// <exception cref="InvalidOperationException">
-    /// Failed to extract plugin names.
-    /// </exception>
     /// <remarks>
     /// Plugin files must be in the <c>plugins</c> directory of the current directory 
     /// where the host application is running.
