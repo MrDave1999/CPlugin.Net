@@ -1,13 +1,19 @@
 <!-- Global properties for all plugins. -->
 <Project>
   <!-- Import global properties from root directory. -->
-  <Import Project="..\..\Directory.build.props" />
+  <Import Project="..\..\Directory.Build.props" />
   <PropertyGroup>
     <!-- 
       Indicates that an assembly is a dynamically loaded component. 
       This will copy the NuGet packages to the output directory.
     -->
     <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
+    <PluginsOutputDirectory>bin/$(Configuration)/$(TargetFramework)/plugins/$(MSBuildProjectName)</PluginsOutputDirectory>
+    <!-- Find the 'CPlugin.Net.sln' file in the parent directories from the current path where the .props file is located. -->
+    <ProjectRootDir>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'CPlugin.Net.sln'))</ProjectRootDir>
+    <WebApiProjectDir>$(ProjectRootDir)/samples/HostApplications/WebApi/$(PluginsOutputDirectory)</WebApiProjectDir>
+    <ConsoleAppProjectDir>$(ProjectRootDir)/samples/HostApplications/ConsoleApp/$(PluginsOutputDirectory)</ConsoleAppProjectDir>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Contracts\Example.Contracts.csproj">
@@ -22,11 +28,6 @@
     <ProjectReference Include="..\..\..\src\Attributes\CPlugin.Net.Attributes.csproj">
       <!-- This tells MSBuild not to copy CPlugin.Net.Attributes.dll to the plug-in output directory. -->
       <Private>false</Private>
-      <!-- 
-        This setting has the same effect as <Private>false</Private> but works on package references 
-        that the CPlugin.Net.Attributes project or one of its dependencies may include.
-      -->
-      <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
   </ItemGroup>
 </Project>
