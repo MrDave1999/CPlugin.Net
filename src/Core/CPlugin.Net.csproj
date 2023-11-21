@@ -19,7 +19,7 @@
     <Description>
       A simple package that implements a plugin loader for .NET.
     </Description>
-    <Version>0.2.0-alpha</Version>
+    <Version>0.2.1-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>
