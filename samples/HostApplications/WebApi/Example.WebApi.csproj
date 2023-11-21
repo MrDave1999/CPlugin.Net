@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Core\CPlugin.Net.csproj" />
     <ProjectReference Include="..\..\Contracts\Example.Contracts.csproj" />
+    <ProjectReference Include="..\..\SharedEntities\Example.SharedEntities.csproj" />
   </ItemGroup>
 
 </Project>
