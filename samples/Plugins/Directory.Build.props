@@ -25,9 +25,16 @@
       -->
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
+    
     <ProjectReference Include="..\..\..\src\Attributes\CPlugin.Net.Attributes.csproj">
       <!-- This tells MSBuild not to copy CPlugin.Net.Attributes.dll to the plug-in output directory. -->
       <Private>false</Private>
     </ProjectReference>
+    <!-- NOTE: Uncomment to use <PackageReference> for your own plugin project. -->
+    <!--
+    <ItemGroup>
+      <PackageReference Include="CPlugin.Net.Attributes" Version="1.0.0" ExcludeAssets="runtime" />
+    </ItemGroup>
+    -->
   </ItemGroup>
 </Project>
