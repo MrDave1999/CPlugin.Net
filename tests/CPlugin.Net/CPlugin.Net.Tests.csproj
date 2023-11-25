@@ -21,10 +21,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- 
+      These references were added only so that all plugin projects could be compiled. 
+      Especially when done from the command line interface (CLI) with dotnet test.
+    -->
     <PluginProjectReference Include="..\Plugins\TestProject.HelloPlugin\TestProject.HelloPlugin.csproj" />
     <PluginProjectReference Include="..\Plugins\TestProject.JsonPlugin\TestProject.JsonPlugin.csproj" />
     <PluginProjectReference Include="..\Plugins\TestProject.OldJsonPlugin\TestProject.OldJsonPlugin.csproj" />
     <PluginProjectReference Include="..\Plugins\TestProject.WebPlugin\TestProject.WebPlugin.csproj" />
+    <!-- End -->
     
     <ProjectReference Include="..\TestProject.Contracts\TestProject.Contracts.csproj" />
     <ProjectReference Include="..\TestProject.PluginHost\TestProject.PluginHost.csproj" />
