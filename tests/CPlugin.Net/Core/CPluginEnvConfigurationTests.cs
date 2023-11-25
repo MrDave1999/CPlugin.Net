@@ -57,6 +57,31 @@ public class CPluginEnvConfigurationTests
     }
 
     [Test]
+    public void GetPluginFiles_WhenPluginFilesAreObtainedFromEnvFile_ShouldReturnsFullPaths()
+    {
+        // Arrange
+        new EnvLoader()
+            .AllowOverwriteExistingVars()
+            .EnableFileNotFoundException()
+            .SetBasePath("./Resources")
+            .Load();
+        var envConfiguration = new CPluginEnvConfiguration();
+        var basePath = AppContext.BaseDirectory;
+        var expectedPaths = new[]
+        {
+            Path.Combine(basePath, "plugins", "TestProject.JsonPlugin", "TestProject.JsonPlugin.dll"),
+            Path.Combine(basePath, "plugins", "TestProject.OldJsonPlugin", "TestProject.OldJsonPlugin.dll"),
+            Path.Combine(basePath, "plugins", "TestProject.WebPlugin", "TestProject.WebPlugin.dll")
+        };
+
+        // Act
+        var actual = envConfiguration.GetPluginFiles().ToList();
+
+        // Assert
+        actual.Should().BeEquivalentTo(expectedPaths);
+    }
+
+    [Test]
     public void GetPluginFiles_WhenPluginFilesAreNotPresent_ShouldReturnsEmptyEnumerable()
     {
         // Arrange
