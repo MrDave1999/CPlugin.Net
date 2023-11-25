@@ -60,6 +60,7 @@ public class CPluginJsonConfigurationTests
     [Test]
     public void GetPluginFiles_WhenPluginFileDoesNotHaveDllExtension_ShouldThrowArgumentException()
     {
+        // Arrange
         var configurationRoot = new ConfigurationBuilder()
             .AddJsonFile("./Resources/setting.json")
             .Build();
@@ -70,5 +71,21 @@ public class CPluginJsonConfigurationTests
 
         // Assert
         act.Should().Throw<ArgumentException>();
+    }
+
+    [Test]
+    public void Constructor_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+    {
+        // Arrange
+        IConfiguration configuration = default;
+
+        // Act
+        Action act = () =>
+        {
+            var config = new CPluginJsonConfiguration(configuration);
+        };
+
+        // Assert
+        act.Should().Throw<ArgumentNullException>();
     }
 }
