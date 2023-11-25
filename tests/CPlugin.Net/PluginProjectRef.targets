@@ -1,0 +1,13 @@
+<Project>
+  <ItemDefinitionGroup>
+    <PluginProjectReference>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </PluginProjectReference>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="@(PluginProjectReference)" />
+  </ItemGroup>
+  
+</Project>
