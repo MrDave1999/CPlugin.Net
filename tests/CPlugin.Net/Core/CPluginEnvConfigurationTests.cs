@@ -113,6 +113,7 @@ public class CPluginEnvConfigurationTests
     [Test]
     public void GetPluginFiles_WhenPluginFileDoesNotHaveDllExtension_ShouldThrowArgumentException()
     {
+        // Arrange
         Environment.SetEnvironmentVariable("PLUGINS", "TestProject.JsonPlugin");
         var envConfiguration = new CPluginEnvConfiguration();
 
