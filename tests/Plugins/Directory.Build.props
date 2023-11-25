@@ -1,0 +1,18 @@
+<Project>
+  <Import Project="..\..\Directory.Build.props" />
+  <PropertyGroup>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
+    <PluginsOutputDirectory>bin/$(Configuration)/$(TargetFramework)/plugins/$(MSBuildProjectName)</PluginsOutputDirectory>
+    <!-- Find the 'CPlugin.Net.sln' file in the parent directories from the current path where the .props file is located. -->
+    <ProjectRootDir>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'CPlugin.Net.sln'))</ProjectRootDir>
+    <OutDir>$(ProjectRootDir)/tests/CPlugin.Net/$(PluginsOutputDirectory)</OutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TestProject.Contracts\TestProject.Contracts.csproj">
+      <Private>false</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\Attributes\CPlugin.Net.Attributes.csproj" Private="false" />
+  </ItemGroup>
+</Project>
