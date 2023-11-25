@@ -64,7 +64,7 @@ public class CPluginEnvConfigurationTests
         var envConfiguration = new CPluginEnvConfiguration();
 
         // Act
-        var actual = envConfiguration.GetPluginFiles();
+        var actual = envConfiguration.GetPluginFiles().ToList();
 
         // Assert
         actual.Should().BeEmpty();
@@ -79,9 +79,22 @@ public class CPluginEnvConfigurationTests
         var envConfiguration = new CPluginEnvConfiguration();
 
         // Act
-        var actual = envConfiguration.GetPluginFiles();
+        var actual = envConfiguration.GetPluginFiles().ToList();
 
         // Assert
         actual.Should().BeEmpty();
+    }
+
+    [Test]
+    public void GetPluginFiles_WhenPluginFileDoesNotHaveDllExtension_ShouldThrowArgumentException()
+    {
+        Environment.SetEnvironmentVariable("PLUGINS", "TestProject.JsonPlugin");
+        var envConfiguration = new CPluginEnvConfiguration();
+
+        // Act
+        Action act = () => envConfiguration.GetPluginFiles().ToList();
+
+        // Assert
+        act.Should().Throw<ArgumentException>();
     }
 }
