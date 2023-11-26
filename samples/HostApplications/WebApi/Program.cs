@@ -20,7 +20,11 @@ foreach (Assembly assembly in PluginLoader.Assemblies)
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/1607
+    options.CustomSchemaIds(type => $"{type.Name}_{Guid.NewGuid()}");
+});
 
 var app = builder.Build();
 
