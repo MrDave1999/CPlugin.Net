@@ -9,4 +9,7 @@ public class PeopleController
 
     [HttpGet]
     public Result<List<Person>> GetAll() => Result.Success(_persons);
+
+    [HttpPost]
+    public Result Create() => Result.Success();
 }

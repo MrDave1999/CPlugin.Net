@@ -7,4 +7,7 @@ public class PersonController : ControllerBase
     [HttpGet] 
     public Result<IEnumerable<Person>> GetAll(IPersonService service)
         => service.GetAll();
+
+    [HttpPost]
+    public Result Create() => Result.Success();
 }
