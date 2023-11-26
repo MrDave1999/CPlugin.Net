@@ -23,6 +23,7 @@ foreach (var @abstract in abstracts)
 var interfaces = PluginLoader.Load<IPluginStartup>();
 foreach (var @interface in interfaces)
     @interface.ConfigureServices(builder.Services);
+builder.Services.AddSingleton(interfaces);
 
 var mvcBuilder = builder.Services.AddControllers();
 foreach (var assembly in PluginLoader.Assemblies)
