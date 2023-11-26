@@ -12,15 +12,9 @@ public class JsonPluginCommand : ICommand
     public string Name => nameof(JsonPluginCommand);
     public string Execute()
     {
-        var version = typeof(JsonPluginCommand)
-            .Assembly
-            .GetName()
-            .Version
-            .ToString();
-
         var value = new
         {
-            Version = version,
+            Version = typeof(JsonConvert).Assembly.FullName
         };
         return JsonConvert.SerializeObject(value, Formatting.Indented);
     }
