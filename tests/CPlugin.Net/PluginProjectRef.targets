@@ -1,0 +1,14 @@
+<Project>
+  <ItemDefinitionGroup>
+    <!-- Avoid copying test plug-ins to output directory (e.g., tests/CPlugin.Net/bin/Debug/net7.0/). -->
+    <PluginProjectReference>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </PluginProjectReference>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="@(PluginProjectReference)" />
+  </ItemGroup>
+  
+</Project>

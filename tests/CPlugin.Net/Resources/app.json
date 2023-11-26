@@ -1,0 +1,7 @@
+{
+  "Plugins": [
+    "TestProject.JsonPlugin.dll",
+    "TestProject.OldJsonPlugin.dll",
+    "TestProject.WebPlugin.dll"
+  ]
+}

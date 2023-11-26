@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <RootNamespace>CPlugin.Net.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotEnv.Core" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="NUnit" />
+    <PackageReference Include="NUnit3TestAdapter" />
+    <PackageReference Include="NUnit.Analyzers" />
+    <PackageReference Include="coverlet.msbuild">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 
+      These references were added only so that all plugin projects could be compiled. 
+      Especially when done from the command line interface (CLI) with dotnet test.
+    -->
+    <PluginProjectReference Include="..\Plugins\TestProject.HelloPlugin\TestProject.HelloPlugin.csproj" />
+    <PluginProjectReference Include="..\Plugins\TestProject.JsonPlugin\TestProject.JsonPlugin.csproj" />
+    <PluginProjectReference Include="..\Plugins\TestProject.OldJsonPlugin\TestProject.OldJsonPlugin.csproj" />
+    <PluginProjectReference Include="..\Plugins\TestProject.WebPlugin\TestProject.WebPlugin.csproj" />
+    <!-- End -->
+    
+    <ProjectReference Include="..\TestProject.Contracts\TestProject.Contracts.csproj" />
+    <ProjectReference Include="..\TestProject.PluginHost\TestProject.PluginHost.csproj" />
+  </ItemGroup>
+
+  <Import Project="PluginProjectRef.targets" />
+
+</Project>
