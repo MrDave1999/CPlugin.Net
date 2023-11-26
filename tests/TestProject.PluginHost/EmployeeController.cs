@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SimpleResults;
 using TestProject.Contracts;
 
 namespace TestProject.PluginHost;
@@ -19,4 +20,7 @@ public class EmployeeController : ControllerBase
 
     [HttpGet("count-startup")]
     public int CountStartup() => _startups.Count();
+
+    [HttpPost]
+    public Result Create() => Result.Success();
 }
