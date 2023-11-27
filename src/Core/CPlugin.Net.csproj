@@ -37,4 +37,8 @@
     <None Include="..\..\LICENSE" Pack="True" PackagePath="" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="CPlugin.Net.Tests" />
+  </ItemGroup>
+
 </Project>
