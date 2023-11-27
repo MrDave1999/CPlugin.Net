@@ -18,17 +18,16 @@ public class PluginLoaderTests
         """;
         Environment.SetEnvironmentVariable("PLUGINS", value);
         var envConfiguration = new CPluginEnvConfiguration();
-        PluginLoader.SetConfiguration(envConfiguration);
-        var expected = new[]
+        int expectedCommands = 2;
+        var expectedVersions = new[]
         {
             "Version=12.0.0.0",
             "Version=13.0.0.0"
         };
 
         // Act
-        var commands = PluginLoader.Load<ICommand>();
-        _ = PluginLoader.Load<ICommand>();
-        _ = PluginLoader.Load<IPluginStartup>();
+        PluginLoader.Load(envConfiguration);
+        var commands = TypeFinder.FindSubtypesOf<ICommand>();
         var versions = commands.Select(command =>
         {
             var json = command.Execute();
@@ -37,8 +36,7 @@ public class PluginLoaderTests
         }).ToList();
 
         // Asserts
-        commands.Should().HaveCount(2);
-        PluginLoader.Assemblies.Should().HaveCount(2);
-        versions.Should().BeEquivalentTo(expected);
+        commands.Should().HaveCount(expectedCommands);
+        versions.Should().BeEquivalentTo(expectedVersions);
     }
 }
