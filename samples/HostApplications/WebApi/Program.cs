@@ -3,12 +3,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 var jsonConfiguration = new CPluginJsonConfiguration(builder.Configuration);
-PluginLoader.SetConfiguration(jsonConfiguration);
 // Loads the plugins from the appsettings.json file.
-var contracts = PluginLoader.Load<IWebStartup>();
-foreach(IWebStartup contract in contracts)
+PluginLoader.Load(jsonConfiguration);
+var startups = TypeFinder.FindSubtypesOf<IWebStartup>();
+foreach(IWebStartup startup in startups)
 {
-    contract.ConfigureServices(builder.Services);
+    startup.ConfigureServices(builder.Services);
 }
 
 IMvcBuilder mvcBuilder = builder.Services.AddControllers();

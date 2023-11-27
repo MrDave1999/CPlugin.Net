@@ -12,15 +12,15 @@ PLUGINS=TestProject.WebPlugin.dll
 new EnvParser().Parse(env);
 
 var envConfiguration = new CPluginEnvConfiguration();
-PluginLoader.SetConfiguration(envConfiguration);
+PluginLoader.Load(envConfiguration);
 
 // Add services to the container.
 
-var abstracts = PluginLoader.Load<AbstractStartup>();
+var abstracts = TypeFinder.FindSubtypesOf<AbstractStartup>();
 foreach (var @abstract in abstracts)
     @abstract.ConfigureServices(builder.Services);
 
-var interfaces = PluginLoader.Load<IPluginStartup>();
+var interfaces = TypeFinder.FindSubtypesOf<IPluginStartup>();
 foreach (var @interface in interfaces)
     @interface.ConfigureServices(builder.Services);
 builder.Services.AddSingleton(interfaces);
