@@ -1,9 +1,11 @@
 ﻿[assembly: Plugin(typeof(Runner1))]
 [assembly: Plugin(typeof(Runner2))]
+[assembly: Plugin(typeof(ExampleTest))]
 
 namespace CPlugin.Net.Tests.Core;
 
-public class ExampleTest { }
+public class ExampleTestBase { }
+public class ExampleTest : ExampleTestBase { }
 public abstract class RunnerBase { }
 public interface IRunner 
 { 
@@ -90,7 +92,7 @@ public class TypeFinderTests
     }
 
     [Test]
-    public void FindSubtypesOf_WhenSupertypeIsNotInterfaceOrAbstractClass_ShouldThrowInvalidOperationException()
+    public void FindSubtypesOf_WhenSupertypeIsNotInterfaceOrAbstractClass_ShouldNotThrowException()
     {
         // Arrange
         var assemblies = new[]
@@ -99,13 +101,10 @@ public class TypeFinderTests
         };
 
         // Act
-        Action act = () =>
-        {
-            var subtypes = TypeFinder.FindSubtypesOf<ExampleTest>(assemblies);
-        };
+        var actual = TypeFinder.FindSubtypesOf<ExampleTestBase>(assemblies);
 
         // Assert
-        act.Should().Throw<InvalidOperationException>();
+        actual.Should().HaveCount(1);
     }
 
     [Test]

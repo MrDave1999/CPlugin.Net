@@ -31,9 +31,6 @@ public static class TypeFinder
     /// <exception cref="ArgumentNullException">
     /// <c>assemblies</c> is <c>null</c>.
     /// </exception>
-    /// <exception cref="InvalidOperationException">
-    /// <c>TSupertype</c> is not an interface or an abstract class.
-    /// </exception>
     public static IEnumerable<TSupertype> FindSubtypesOf<TSupertype>() where TSupertype : class
         => FindSubtypesOf<TSupertype>(PluginLoader.Assemblies);
 
@@ -45,10 +42,7 @@ public static class TypeFinder
         if (assemblies is null)
             throw new ArgumentNullException(nameof(assemblies));
 
-        if(typeof(TSupertype).IsAbstract || typeof(TSupertype).IsInterface)
-            return GetSubtypesOf<TSupertype>(assemblies);
-
-        throw new InvalidOperationException($"'{typeof(TSupertype).FullName}' type must be abstract or an interface.");
+        return GetSubtypesOf<TSupertype>(assemblies);
     }
 
     private static IEnumerable<TSupertype> GetSubtypesOf<TSupertype>(IEnumerable<Assembly> assemblies) 
