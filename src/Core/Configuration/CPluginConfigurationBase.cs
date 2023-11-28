@@ -30,24 +30,17 @@ public abstract class CPluginConfigurationBase
     /// <summary>
     /// Gets the full path of a plugin file.
     /// </summary>
+    /// <remarks>
+    /// If the plugin name does not have the <c>.dll</c> extension, it is added by default.
+    /// </remarks>
     /// <param name="pluginFile">The name of a plugin file.</param>
     /// <returns>The full path of a plugin file.</returns>
-    /// <exception cref="ArgumentException">
-    /// <c>pluginFile</c> does not have .dll extension.
-    /// </exception>
     protected static string GetPluginPath(string pluginFile)
     {
-        bool isNotPlugin = !Path.GetExtension(pluginFile).Equals(".dll");
-        if (isNotPlugin)
-        {
-            var message =
-            $"""
-            '{pluginFile}' plug-in must have the extension .dll
-            Please check your configuration file.
-            """;
-            throw new ArgumentException(message, nameof(pluginFile));
-        }
-
+        bool hasDllExtension = Path
+            .GetExtension(pluginFile)
+            .Equals(".dll");
+        pluginFile = hasDllExtension ? pluginFile : pluginFile + ".dll";
         // Example: MyPlugin1
         var pluginDirectory = Path.GetFileNameWithoutExtension(pluginFile);
         // Example: /home/admin/HostApplication/bin/Debug/net7.0/plugins/MyPlugin1
