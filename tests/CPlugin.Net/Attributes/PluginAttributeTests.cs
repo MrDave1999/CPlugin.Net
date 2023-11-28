@@ -15,7 +15,9 @@ public class PluginAttributeTests
         };
 
         // Assert
-        act.Should().Throw<ArgumentNullException>();
+        act.Should()
+           .Throw<ArgumentNullException>()
+           .WithParameterName(nameof(pluginType));
     }
 
     [TestCaseSource(typeof(PluginAttributeTestCases))]

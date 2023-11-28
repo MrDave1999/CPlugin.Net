@@ -92,6 +92,8 @@ public class CPluginJsonConfigurationTests
         };
 
         // Assert
-        act.Should().Throw<ArgumentNullException>();
+        act.Should()
+           .Throw<ArgumentNullException>()
+           .WithParameterName(nameof(configuration));
     }
 }
