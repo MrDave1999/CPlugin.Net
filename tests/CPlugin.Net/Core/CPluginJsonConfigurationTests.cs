@@ -58,19 +58,25 @@ public class CPluginJsonConfigurationTests
     }
 
     [Test]
-    public void GetPluginFiles_WhenPluginFileDoesNotHaveDllExtension_ShouldThrowArgumentException()
+    public void GetPluginFiles_WhenPluginFileDoesNotHaveDllExtension_ShouldBeAddedByDefault()
     {
         // Arrange
         var configurationRoot = new ConfigurationBuilder()
             .AddJsonFile("./Resources/setting.json")
             .Build();
         var jsonConfiguration = new CPluginJsonConfiguration(configurationRoot);
+        var basePath = AppContext.BaseDirectory;
+        var expectedPaths = new[]
+        {
+            Path.Combine(basePath, "plugins", "TestProject.OldJsonPlugin", "TestProject.OldJsonPlugin.dll"),
+            Path.Combine(basePath, "plugins", "TestProject.JsonPlugin", "TestProject.JsonPlugin.dll")
+        };
 
         // Act
-        Action act = () => jsonConfiguration.GetPluginFiles().ToList();
+        var actual = jsonConfiguration.GetPluginFiles().ToList();
 
         // Assert
-        act.Should().Throw<ArgumentException>();
+        actual.Should().BeEquivalentTo(expectedPaths);
     }
 
     [Test]

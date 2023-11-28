@@ -27,6 +27,12 @@ public class CPluginEnvConfigurationTests
             """;
 
             yield return
+            """
+               TestProject.JsonPlugin.dll  TestProject.OldJsonPlugin.dll
+               TestProject.WebPlugin.dll
+            """;
+
+            yield return
             $"""
             {'\t'}{'\t'}   TestProject.JsonPlugin.dll
             {'\t'}{'\t'}   TestProject.OldJsonPlugin.dll
@@ -111,16 +117,27 @@ public class CPluginEnvConfigurationTests
     }
 
     [Test]
-    public void GetPluginFiles_WhenPluginFileDoesNotHaveDllExtension_ShouldThrowArgumentException()
+    public void GetPluginFiles_WhenPluginFileDoesNotHaveDllExtension_ShouldBeAddedByDefault()
     {
         // Arrange
-        Environment.SetEnvironmentVariable("PLUGINS", "TestProject.JsonPlugin");
+        var value =
+        """
+        TestProject.OldJsonPlugin 
+        TestProject.JsonPlugin
+        """;
+        Environment.SetEnvironmentVariable("PLUGINS", value);
         var envConfiguration = new CPluginEnvConfiguration();
+        var basePath = AppContext.BaseDirectory;
+        var expectedPaths = new[]
+        {
+            Path.Combine(basePath, "plugins", "TestProject.OldJsonPlugin", "TestProject.OldJsonPlugin.dll"),
+            Path.Combine(basePath, "plugins", "TestProject.JsonPlugin", "TestProject.JsonPlugin.dll")
+        };
 
         // Act
-        Action act = () => envConfiguration.GetPluginFiles().ToList();
+        var actual = envConfiguration.GetPluginFiles().ToList();
 
         // Assert
-        act.Should().Throw<ArgumentException>();
+        actual.Should().BeEquivalentTo(expectedPaths);
     }
 }
