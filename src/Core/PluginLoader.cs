@@ -10,86 +10,46 @@ namespace CPlugin.Net;
 /// </summary>
 public static class PluginLoader
 {
-    private static IEnumerable<string> s_assemblyFiles;
-    private readonly static Dictionary<string, Assembly> s_assemblies;
+    private readonly static Dictionary<string, Assembly> s_assemblies = new();
 
     /// <summary>
     /// Gets the plugin assemblies.
     /// </summary>
     public static IEnumerable<Assembly> Assemblies => s_assemblies.Values;
 
-    static PluginLoader()
-    {
-        s_assemblyFiles = Enumerable.Empty<string>();
-        s_assemblies = new();
-    }
-
     /// <summary>
-    /// Sets a configuration source for the loader.
+    /// Loads plugins from a configuration source specified by the <c>configuration</c> parameter.
+    /// This means that the plugin names can be obtained from a json or .env file.
     /// </summary>
-    /// <remarks>This allows to get the plugin files from a json or .env file.</remarks>
-    /// <param name="configuration">A configuration source for the loader.</param>
+    /// <param name="configuration">A configuration source to get the plugin files.</param>
+    /// <remarks>
+    /// This method is idempotent, so if this method is called N times, 
+    /// it will not reload assemblies that have already been loaded.
+    /// </remarks>
     /// <exception cref="ArgumentNullException">
     /// <c>configuration</c> is <c>null</c>.
     /// </exception>
-    public static void SetConfiguration(CPluginConfigurationBase configuration)
+    public static void Load(CPluginConfigurationBase configuration)
     {
         if (configuration is null)
             throw new ArgumentNullException(nameof(configuration));
 
-        s_assemblyFiles = configuration.GetPluginFiles();
-    }
-
-    /// <summary>
-    /// Loads the plugins together with the specified contract.
-    /// </summary>
-    /// <typeparam name="TContract">
-    /// The type of contract shared between the host application and the plugins.
-    /// </typeparam>
-    /// <returns>
-    /// An instance of type <see cref="IEnumerable{TContract}"/> that contains the instances
-    /// that implement the contract specified by <typeparamref name="TContract"/>.
-    /// <para>or</para>
-    /// Returns an empty enumerable when the plugin names could not be obtained from a configuration source.
-    /// <para>This method never returns <c>null</c>.</para>
-    /// </returns>
-    /// <exception cref="InvalidOperationException">
-    /// If a plugin does not use the <see cref="PluginAttribute"/> type at the assembly level.
-    /// </exception>
-    public static IEnumerable<TContract> Load<TContract>() where TContract : class
-    {
-        var contracts = new List<TContract>();
-        foreach (string assemblyFile in s_assemblyFiles)
+        var assemblyFiles = configuration.GetPluginFiles();
+        foreach (string assemblyFile in assemblyFiles)
         {
             Assembly currentAssembly = FindAssembly(assemblyFile);
-            currentAssembly ??= LoadAssembly(assemblyFile);
-            var pluginAttributes = currentAssembly.GetCustomAttributes<PluginAttribute>();
-            if (!pluginAttributes.Any())
-            {
-                var message = $"'{currentAssembly.GetName().Name}' plugin does not use the '{nameof(PluginAttribute)}' attribute.";
-                throw new InvalidOperationException(message);
-            }
-            foreach (PluginAttribute pluginAttribute in pluginAttributes)
-            {
-                Type type = pluginAttribute.PluginType;
-                if (typeof(TContract).IsAssignableFrom(type))
-                {
-                    var contract = (TContract)Activator.CreateInstance(type);
-                    contracts.Add(contract);
-                }
-            }
+            if(currentAssembly is null)
+                LoadAssembly(assemblyFile);
         }
-        return contracts;
     }
 
-    private static Assembly LoadAssembly(string assemblyFile)
+    private static void LoadAssembly(string assemblyFile)
     {
         var loadContext = new PluginLoadContext(assemblyFile);
         var assemblyName = AssemblyName.GetAssemblyName(assemblyFile);
         var currentAssembly = loadContext.LoadFromAssemblyName(assemblyName);
         s_assemblies.Add(assemblyFile, currentAssembly);
         PluginLogger.DefaultLogInformation(currentAssembly.GetName().Name, currentAssembly.FullName);
-        return currentAssembly;
     }
 
     private static Assembly FindAssembly(string assemblyFile)

@@ -4,10 +4,10 @@ Console.WriteLine("PLUGINS=" + EnvReader.Instance["PLUGINS"]);
 Console.WriteLine();
 
 var envConfiguration = new CPluginEnvConfiguration();
-PluginLoader.SetConfiguration(envConfiguration);
 // Loads the plugins from the .env file.
-var contracts = PluginLoader.Load<ICommand>();
-foreach(ICommand contract in contracts)
+PluginLoader.Load(envConfiguration);
+var commands = TypeFinder.FindSubtypesOf<ICommand>();
+foreach(ICommand command in commands)
 {
-    contract.Execute();
+    command.Execute();
 }

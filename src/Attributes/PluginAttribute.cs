@@ -3,10 +3,18 @@
 namespace CPlugin.Net;
 
 /// <summary>
-/// This attribute is required so that the plugin loader can create the instance of the type that implements the contract.
-/// <para>Example:</para>
-/// <c>[assembly: Plugin(typeof(PluginStartup))]</c>
+/// This attribute is required so that the type finder can create the instance of the subtype that implements the contract.
 /// </summary>
+/// <remarks>
+/// Example:
+/// <para>
+/// <c>IPluginStartup</c> represents the contract and can reside in its own project called <c>App.Contracts</c>.
+/// </para>
+/// <para>Each plugin must implement the contract in this way:</para> 
+/// <c>class Startup : IPluginStartup { }</c>
+/// <para>And then add this line before the namespace declaration:</para>
+/// <c>[assembly: Plugin(typeof(Startup))]</c>
+/// </remarks>
 [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
 public class PluginAttribute : Attribute
 {
