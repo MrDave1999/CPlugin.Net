@@ -1,16 +1,11 @@
 using CPlugin.Net;
-using DotEnv.Core;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using SimpleResults;
 using TestProject.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var env =
-"""
-PLUGINS=TestProject.WebPlugin.dll
-""";
-new EnvParser().Parse(env);
-
+Environment.SetEnvironmentVariable("PLUGINS", "TestProject.WebPlugin.dll");
 var envConfiguration = new CPluginEnvConfiguration();
 PluginLoader.Load(envConfiguration);
 
@@ -31,6 +26,10 @@ foreach (var assembly in PluginLoader.Assemblies)
     // This allows to register the controllers for each loaded assembly.
     mvcBuilder.PartManager.ApplicationParts.Add(new AssemblyPart(assembly));
 }
+mvcBuilder.AddMvcOptions(options =>
+{
+    options.Filters.Add<TranslateResultToActionResultAttribute>();
+});
 
 var app = builder.Build();
 
@@ -41,3 +40,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// This class used in the integration test project.
+public partial class Program { }
