@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPlugin.Net.Tests", "tests\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Contracts", "samples\Contracts\Example.Contracts.csproj", "{BBDE7F3C-2A41-40B6-B609-839D09676D0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.ConsoleApp", "samples\HostApplications\ConsoleApp\Example.ConsoleApp.csproj", "{3E943746-09CD-430E-9BBF-67DBBF9F5CEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.HostConsoleApp", "samples\HostApplications\ConsoleApp\Example.HostConsoleApp.csproj", "{3E943746-09CD-430E-9BBF-67DBBF9F5CEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.WebApi", "samples\HostApplications\WebApi\Example.WebApi.csproj", "{C221B4F0-857F-4380-B5AD-E4B2BBA65622}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.HostWebApi", "samples\HostApplications\WebApi\Example.HostWebApi.csproj", "{C221B4F0-857F-4380-B5AD-E4B2BBA65622}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.SharedEntities", "samples\SharedEntities\Example.SharedEntities.csproj", "{F66A1430-3F32-4E25-8966-54D502D216DE}"
 EndProject
