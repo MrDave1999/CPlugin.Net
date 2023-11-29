@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SimpleResults;
-using TestProject.Contracts;
 
 namespace TestProject.PluginHost;
 
@@ -8,26 +7,20 @@ namespace TestProject.PluginHost;
 [Route("[controller]")]
 public class EmployeeController : ControllerBase
 {
-    private readonly IEnumerable<IPluginStartup> _startups;
-    public EmployeeController(IEnumerable<IPluginStartup> startups) => _startups = startups;
+    private readonly List<Employee> _employees;
+
+    public EmployeeController(List<Employee> employees)
+    {
+        _employees = employees;
+    }
 
     [HttpGet]
-    public List<Employee> GetAll() => new()
-    {
-        new() 
-        { 
-            Id   = _startups.Count(), 
-            Name = "Bob",   
-            Role = "admin" 
-        },
-        new() 
-        { 
-            Id   = 2, 
-            Name = "Alice", 
-            Role = "manager" 
-        }
-    };
+    public List<Employee> GetAll() => _employees;
 
     [HttpPost]
-    public Result Create() => Result.Success();
+    public Result Create([FromBody]Employee employee)
+    {
+        _employees.Add(employee);
+        return Result.CreatedResource();
+    }
 }
