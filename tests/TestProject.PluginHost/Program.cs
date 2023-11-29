@@ -2,6 +2,7 @@ using CPlugin.Net;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using SimpleResults;
 using TestProject.Contracts;
+using TestProject.PluginHost;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,8 @@ mvcBuilder.AddMvcOptions(options =>
 {
     options.Filters.Add<TranslateResultToActionResultAttribute>();
 });
+
+builder.Services.AddSeedData();
 
 var app = builder.Build();
 
