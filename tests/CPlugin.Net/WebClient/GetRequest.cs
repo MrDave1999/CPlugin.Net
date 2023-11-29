@@ -1,6 +1,6 @@
 ﻿namespace CPlugin.Net.Tests.WebClient;
 
-public class GetPersonsTests
+public class GetRequest
 {
     [Test]
     public async Task Get_WhenUsersAreObtained_ShouldReturnsHttpStatusCodeOk()
@@ -43,5 +43,27 @@ public class GetPersonsTests
 
         // Assert
         httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
+    }
+
+    [Test]
+    public async Task Get_WhenGettingPluginInfo_ShouldReturnsHttpStatusCodeOk()
+    {
+        // Arrange
+        using var factory = new WebApplicationFactory<Program>();
+        var client = factory.CreateClient();
+        var expected = new[]
+        {
+            "TestProject.WebPlugin.Startup"
+        };
+
+        // Act
+        var httpResponse = await client.GetAsync("/Plugin");
+        var currentResult = await httpResponse
+            .Content
+            .ReadFromJsonAsync<string[]>();
+
+        // Assert
+        httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
+        currentResult.Should().BeEquivalentTo(expected);
     }
 }

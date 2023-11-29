@@ -10,3 +10,4 @@ global using SimpleResults;
 global using CPlugin.Net;
 global using CPlugin.Net.Tests.Core;
 global using TestProject.Contracts;
+global using TestProject.PluginHost;
