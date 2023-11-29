@@ -5,7 +5,6 @@ namespace TestProject.WebPlugin;
 
 [ApiController]
 [Route("[controller]")]
-[TranslateResultToActionResult]
 public class UserController : ControllerBase
 {
     [HttpGet]
@@ -15,4 +14,8 @@ public class UserController : ControllerBase
     [HttpPost]
     public Result Create([FromBody]User user, UserService service) 
         => service.Create(user.Name, user.Password);
+
+    [HttpDelete]
+    public Result Clear(UserService service)
+        => service.Clear();
 }
