@@ -14,12 +14,19 @@ public class EmployeeController : ControllerBase
     [HttpGet]
     public List<Employee> GetAll() => new()
     {
-        new() { Id = 1, Name = "Bob",   Role = "admin" },
-        new() { Id = 2, Name = "Alice", Role = "manager" }
+        new() 
+        { 
+            Id   = _startups.Count(), 
+            Name = "Bob",   
+            Role = "admin" 
+        },
+        new() 
+        { 
+            Id   = 2, 
+            Name = "Alice", 
+            Role = "manager" 
+        }
     };
-
-    [HttpGet("count-startup")]
-    public int CountStartup() => _startups.Count();
 
     [HttpPost]
     public Result Create() => Result.Success();
