@@ -18,4 +18,10 @@ public class UserService
         _users.Add(new User { Name = name, Password = password });
         return Result.CreatedResource();
     }
+
+    public Result Clear()
+    {
+        _users.Clear();
+        return Result.Success();
+    }
 }
