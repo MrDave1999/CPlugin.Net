@@ -20,8 +20,29 @@ public class PluginAttributeTests
            .WithParameterName(nameof(pluginType));
     }
 
-    [TestCaseSource(typeof(PluginAttributeTestCases))]
-    public void Constructor_WhenTypeIsNotInstantiable_ShouldThrowArgumentException(Type pluginType)
+    [TestCase(typeof(IExample))]
+    [TestCase(typeof(ExampleBase))]
+    [TestCase(typeof(AbstractExample))]
+    public void Constructor_WhenPluginTypeIsAbstractOrInterface_ShouldThrowArgumentException(Type pluginType)
+    {
+        // Act
+        Action act = () =>
+        {
+            var attr = new PluginAttribute(pluginType);
+        };
+
+        // Assert
+        act.Should()
+           .Throw<ArgumentException>()
+           .WithParameterName(nameof(pluginType));
+    }
+
+    [TestCase(typeof(StructExample))]
+    [TestCase(typeof(EnumExample))]
+    [TestCase(typeof(RecordStructExample))]
+    [TestCase(typeof(int))]
+    [TestCase(typeof(decimal))]
+    public void Constructor_WhenPluginTypeIsNotInstantiableClass_ShouldThrowArgumentException(Type pluginType)
     {
         // Act
         Action act = () =>
@@ -36,17 +57,15 @@ public class PluginAttributeTests
     }
 
     [Test]
-    public void Constructor_WhenTypeIsInstantiable_ShouldNotThrowException()
+    public void Constructor_WhenPluginTypeIsInstantiableClass_ShouldNotThrowException()
     {
         // Arrange
-        Type expected = typeof(Example);
+        Type expectedPluginType = typeof(Example);
 
         // Act
-        var actual = new PluginAttribute(expected);
+        var actual = new PluginAttribute(expectedPluginType);
 
         // Assert
-        actual.PluginType.Should().Be(expected);
+        actual.PluginType.Should().Be(expectedPluginType);
     }
-
-    private class Example { }
 }
