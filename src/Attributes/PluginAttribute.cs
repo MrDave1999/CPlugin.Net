@@ -33,16 +33,26 @@ public class PluginAttribute : Attribute
     /// <c>pluginType</c> is <c>null</c>.
     /// </exception>
     /// <exception cref="ArgumentException">
-    /// <c>pluginType</c> is not instantiable.
+    /// <c>pluginType</c> is an interface or abstract class.
+    /// <para>or</para>
+    /// <c>pluginType</c> is not an instantiable class.
     /// </exception>
     public PluginAttribute(Type pluginType)
     {
         if (pluginType is null)
-            throw new ArgumentNullException(nameof(pluginType));
-
-        if(!pluginType.IsClass || pluginType.IsAbstract)
         {
-            var message = $"{pluginType.Name} must be a class that can be instantiated. It cannot be abstract or an interface.";
+            throw new ArgumentNullException(nameof(pluginType));
+        }
+
+        if(pluginType.IsInterface || pluginType.IsAbstract)
+        {
+            var message = $"'{pluginType.FullName}' type must not be an interface or an abstract class.";
+            throw new ArgumentException(message, nameof(pluginType));
+        }
+
+        if(!pluginType.IsClass)
+        {
+            var message = $"'{pluginType.FullName}' type must be an instantiable class.";
             throw new ArgumentException(message, nameof(pluginType));
         }
 
