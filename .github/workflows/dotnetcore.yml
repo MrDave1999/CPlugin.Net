@@ -12,7 +12,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [ubuntu-latest]
         dotnet-version: ['8.x']
     runs-on: ${{ matrix.os }}
     steps:
