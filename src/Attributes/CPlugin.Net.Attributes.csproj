@@ -18,7 +18,7 @@
     <Description>
       A simple package that includes the PluginAttribute type to be used by plugins.
     </Description>
-    <Version>0.1.1-alpha</Version>
+    <Version>0.2.0-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>
