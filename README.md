@@ -233,7 +233,9 @@ MyPlugin3.dll
 Then you can use the `CPluginEnvConfiguration` type to get the plugin files.
 ```cs
 // Load the .env file.
-new DotEnv.Core.EnvLoader().Load();
+new DotEnv.Core.EnvLoader()
+    .AddEnvFile(".env")
+    .Load();
 var envConfiguration = new CPluginEnvConfiguration();
 List<string> pluginFiles = envConfiguration.GetPluginFiles().ToList();
 ```
@@ -256,7 +258,9 @@ In the `Program.cs` (entry point) call the plugin loader.
 
 **An example using as configuration source a .env file:**
 ```cs
-new DotEnv.Core.EnvLoader().Load();
+new DotEnv.Core.EnvLoader()
+    .AddEnvFile(".env")
+    .Load();
 var envConfiguration = new CPluginEnvConfiguration();
 // Loads the plugins from the .env file.
 PluginLoader.Load(envConfiguration);
