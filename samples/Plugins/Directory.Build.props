@@ -16,7 +16,7 @@
     <ConsoleAppProjectDir>$(ProjectRootDir)/samples/HostApplications/ConsoleApp/$(PluginsOutputDirectory)</ConsoleAppProjectDir>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Contracts\Example.Contracts.csproj">
+    <ProjectReference Include="$(ProjectRootDir)/samples/Contracts/Example.Contracts.csproj">
       <!-- This tells MSBuild not to copy Example.Contracts.dll to the plug-in output directory. -->
       <Private>false</Private>
       <!-- 
@@ -26,7 +26,7 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
     
-    <ProjectReference Include="..\..\..\src\Attributes\CPlugin.Net.Attributes.csproj">
+    <ProjectReference Include="$(ProjectRootDir)/src/Attributes/CPlugin.Net.Attributes.csproj">
       <!-- This tells MSBuild not to copy CPlugin.Net.Attributes.dll to the plug-in output directory. -->
       <Private>false</Private>
     </ProjectReference>

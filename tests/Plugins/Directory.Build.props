@@ -9,10 +9,10 @@
     <OutDir>$(ProjectRootDir)/tests/CPlugin.Net/$(PluginsOutputDirectory)</OutDir>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TestProject.Contracts\TestProject.Contracts.csproj">
+    <ProjectReference Include="$(ProjectRootDir)/tests/TestProject.Contracts/TestProject.Contracts.csproj">
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\src\Attributes\CPlugin.Net.Attributes.csproj" Private="false" />
+    <ProjectReference Include="$(ProjectRootDir)/src/Attributes/CPlugin.Net.Attributes.csproj" Private="false" />
   </ItemGroup>
 </Project>
