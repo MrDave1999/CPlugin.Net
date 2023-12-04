@@ -8,4 +8,4 @@
 
 [![CPlugin.Net-logo](https://raw.githubusercontent.com/MrDave1999/CPlugin.Net/bd7e7c8787e5a1b4987cd5a506e680261dce19b0/plugin-logo.png)](https://github.com/MrDave1999/CPlugin.Net)
 
-A simple library that implements a plugin loader for .NET. It also includes a `PluginAttribute` type to be used by plugins.
+A simple library that allows to implement a plugin-based architecture. It also includes a `PluginAttribute` type to be used by plugins.
