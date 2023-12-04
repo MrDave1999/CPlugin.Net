@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Method Load
+    <title>Class TypeFinder
    | CPlugin.Net </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Method Load
+    <meta name="title" content="Class TypeFinder
    | CPlugin.Net ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -78,68 +78,69 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="CPlugin.Net.PluginLoader.Load*">
-
-<h1 id="CPlugin_Net_PluginLoader_Load_" data-uid="CPlugin.Net.PluginLoader.Load*">Method Load
-</h1>
-<div class="markdown level0 summary"></div>
-<div class="markdown level0 conceptual"></div>
-
-<span class="small pull-right mobile-hide">
-  <span class="divider">|</span>
-  <a href="https://github.com/MrDave1999/CPlugin.Net/new/master/apiSpec/new?filename=CPlugin_Net_PluginLoader_Load_CPlugin_Net_CPluginConfigurationBase_.md&amp;value=---%0Auid%3A%20CPlugin.Net.PluginLoader.Load(CPlugin.Net.CPluginConfigurationBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-</span>
-<span class="small pull-right mobile-hide">
-  <a href="https://github.com/MrDave1999/CPlugin.Net/blob/master/src/Core/PluginLoader.cs/#L32">View Source</a>
-</span>
-<a id="CPlugin_Net_PluginLoader_Load_" data-uid="CPlugin.Net.PluginLoader.Load*"></a>
-<h4 id="CPlugin_Net_PluginLoader_Load_CPlugin_Net_CPluginConfigurationBase_" data-uid="CPlugin.Net.PluginLoader.Load(CPlugin.Net.CPluginConfigurationBase)">Load(CPluginConfigurationBase)</h4>
-<div class="markdown level1 summary"><p>Loads plugins from a configuration source specified by the <code>configuration</code> parameter.
-This means that the plugin names can be obtained from a json or .env file.</p>
+            <article class="content wrap" id="_content" data-uid="CPlugin.Net.TypeFinder">
+  
+  
+  <h1 id="CPlugin_Net_TypeFinder" data-uid="CPlugin.Net.TypeFinder" class="text-break">Class TypeFinder
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a type finder for plugins loaded by <a class="xref" href="CPlugin.Net.PluginLoader.html">PluginLoader</a>.</p>
 </div>
-<div class="markdown level1 conceptual"></div>
-<h5 class="decalaration">Declaration</h5>
-<div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public static void Load(CPluginConfigurationBase configuration)</code></pre>
-</div>
-<h5 class="parameters">Parameters</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a class="xref" href="CPlugin.Net.CPluginConfigurationBase.html">CPluginConfigurationBase</a></td>
-      <td><span class="parametername">configuration</span></td>
-      <td><p>A configuration source to get the plugin files.</p>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">TypeFinder</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CPlugin.Net.html">CPlugin.Net</a></h6>
+  <h6><strong>Assembly</strong>: CPlugin.Net.dll</h6>
+  <h5 id="CPlugin_Net_TypeFinder_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class TypeFinder</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="CPlugin_Net_TypeFinder_FindSubtypesOf__1" data-uid="CPlugin.Net.TypeFinder.FindSubtypesOf``1">
+          <a class="xref" href="CPlugin.Net.TypeFinder.FindSubtypesOf.html#CPlugin_Net_TypeFinder_FindSubtypesOf__1">FindSubtypesOf&lt;TSupertype&gt;()</a>
+        </td>
+        <td class="markdown level1 summary"><p>Finds subtypes that implement the contract specified by <code data-dev-comment-type="typeparamref" class="typeparamref">TSupertype</code>
+using the assemblies loaded by <a class="xref" href="CPlugin.Net.PluginLoader.html">PluginLoader</a>.</p>
 </td>
-    </tr>
-  </tbody>
-</table>
-<h5 id="CPlugin_Net_PluginLoader_Load_CPlugin_Net_CPluginConfigurationBase__remarks">Remarks</h5>
-<div class="markdown level1 remarks"><p>This method is idempotent, so if this method is called N times,
-it will not reload assemblies that have already been loaded.</p>
-</div>
-<h5 class="exceptions">Exceptions</h5>
-<table class="table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Condition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
-      <td><p><code>configuration</code> is <code>null</code>.</p>
-</td>
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -148,10 +149,10 @@ it will not reload assemblies that have already been loaded.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/MrDave1999/CPlugin.Net/new/master/apiSpec/new?filename=CPlugin_Net_PluginLoader_Load_.md&amp;value=---%0Auid%3A%20CPlugin.Net.PluginLoader.Load*%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/MrDave1999/CPlugin.Net/new/master/apiSpec/new?filename=CPlugin_Net_TypeFinder.md&amp;value=---%0Auid%3A%20CPlugin.Net.TypeFinder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/MrDave1999/CPlugin.Net/blob/master/src/Core/PluginLoader.cs/#L32" class="contribution-link">View Source</a>
+                    <a href="https://github.com/MrDave1999/CPlugin.Net/blob/master/src/Core/TypeFinder.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

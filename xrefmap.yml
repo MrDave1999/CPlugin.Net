@@ -145,30 +145,36 @@ references:
   commentId: Overload:CPlugin.Net.PluginLoader.Assemblies
   fullName: CPlugin.Net.PluginLoader.Assemblies
   nameWithType: PluginLoader.Assemblies
+- uid: CPlugin.Net.PluginLoader.Load(CPlugin.Net.CPluginConfigurationBase)
+  name: Load(CPluginConfigurationBase)
+  href: api/CPlugin.Net.PluginLoader.Load.html#CPlugin_Net_PluginLoader_Load_CPlugin_Net_CPluginConfigurationBase_
+  commentId: M:CPlugin.Net.PluginLoader.Load(CPlugin.Net.CPluginConfigurationBase)
+  fullName: CPlugin.Net.PluginLoader.Load(CPlugin.Net.CPluginConfigurationBase)
+  nameWithType: PluginLoader.Load(CPluginConfigurationBase)
 - uid: CPlugin.Net.PluginLoader.Load*
   name: Load
   href: api/CPlugin.Net.PluginLoader.Load.html
   commentId: Overload:CPlugin.Net.PluginLoader.Load
   fullName: CPlugin.Net.PluginLoader.Load
   nameWithType: PluginLoader.Load
-- uid: CPlugin.Net.PluginLoader.Load``1
-  name: Load<TContract>()
-  href: api/CPlugin.Net.PluginLoader.Load.html#CPlugin_Net_PluginLoader_Load__1
-  commentId: M:CPlugin.Net.PluginLoader.Load``1
-  name.vb: Load(Of TContract)()
-  fullName: CPlugin.Net.PluginLoader.Load<TContract>()
-  fullName.vb: CPlugin.Net.PluginLoader.Load(Of TContract)()
-  nameWithType: PluginLoader.Load<TContract>()
-  nameWithType.vb: PluginLoader.Load(Of TContract)()
-- uid: CPlugin.Net.PluginLoader.SetConfiguration(CPlugin.Net.CPluginConfigurationBase)
-  name: SetConfiguration(CPluginConfigurationBase)
-  href: api/CPlugin.Net.PluginLoader.SetConfiguration.html#CPlugin_Net_PluginLoader_SetConfiguration_CPlugin_Net_CPluginConfigurationBase_
-  commentId: M:CPlugin.Net.PluginLoader.SetConfiguration(CPlugin.Net.CPluginConfigurationBase)
-  fullName: CPlugin.Net.PluginLoader.SetConfiguration(CPlugin.Net.CPluginConfigurationBase)
-  nameWithType: PluginLoader.SetConfiguration(CPluginConfigurationBase)
-- uid: CPlugin.Net.PluginLoader.SetConfiguration*
-  name: SetConfiguration
-  href: api/CPlugin.Net.PluginLoader.SetConfiguration.html
-  commentId: Overload:CPlugin.Net.PluginLoader.SetConfiguration
-  fullName: CPlugin.Net.PluginLoader.SetConfiguration
-  nameWithType: PluginLoader.SetConfiguration
+- uid: CPlugin.Net.TypeFinder
+  name: TypeFinder
+  href: api/CPlugin.Net.TypeFinder.html
+  commentId: T:CPlugin.Net.TypeFinder
+  fullName: CPlugin.Net.TypeFinder
+  nameWithType: TypeFinder
+- uid: CPlugin.Net.TypeFinder.FindSubtypesOf*
+  name: FindSubtypesOf
+  href: api/CPlugin.Net.TypeFinder.FindSubtypesOf.html
+  commentId: Overload:CPlugin.Net.TypeFinder.FindSubtypesOf
+  fullName: CPlugin.Net.TypeFinder.FindSubtypesOf
+  nameWithType: TypeFinder.FindSubtypesOf
+- uid: CPlugin.Net.TypeFinder.FindSubtypesOf``1
+  name: FindSubtypesOf<TSupertype>()
+  href: api/CPlugin.Net.TypeFinder.FindSubtypesOf.html#CPlugin_Net_TypeFinder_FindSubtypesOf__1
+  commentId: M:CPlugin.Net.TypeFinder.FindSubtypesOf``1
+  name.vb: FindSubtypesOf(Of TSupertype)()
+  fullName: CPlugin.Net.TypeFinder.FindSubtypesOf<TSupertype>()
+  fullName.vb: CPlugin.Net.TypeFinder.FindSubtypesOf(Of TSupertype)()
+  nameWithType: TypeFinder.FindSubtypesOf<TSupertype>()
+  nameWithType.vb: TypeFinder.FindSubtypesOf(Of TSupertype)()

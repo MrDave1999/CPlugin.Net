@@ -97,12 +97,13 @@
       <section><p>Represents a configuration to get the plugin files from a json.</p>
 </section>
       <h4><a class="xref" href="CPlugin.Net.PluginAttribute.html">PluginAttribute</a></h4>
-      <section><p>This attribute is required so that the plugin loader can create the instance of the type that implements the contract.</p>
-<p>Example:</p>
-<code>[assembly: Plugin(typeof(PluginStartup))]</code>
+      <section><p>This attribute is required so that the type finder can create the instance of the subtype that implements the contract.</p>
 </section>
       <h4><a class="xref" href="CPlugin.Net.PluginLoader.html">PluginLoader</a></h4>
       <section><p>Represents the loader of plug-in assemblies.</p>
+</section>
+      <h4><a class="xref" href="CPlugin.Net.TypeFinder.html">TypeFinder</a></h4>
+      <section><p>Represents a type finder for plugins loaded by <a class="xref" href="CPlugin.Net.PluginLoader.html">PluginLoader</a>.</p>
 </section>
 </article>
           </div>
