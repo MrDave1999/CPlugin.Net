@@ -18,8 +18,9 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
 - [Limitations](#limitations)
 - [Why did I create this library?](#why-did-i-create-this-library)
 - [What is Plug-in Architecture?](#what-is-plug-in-architecture)
-  - [Benefits](#benefits)
-  - [Disadvantages](#disadvantages)
+  - [What problem does it solve?](#what-problem-does-it-solve)
+  - [Where can I apply it?](#where-can-i-apply-it)
+  - [Technical challenges](#technical-challenges)
   - [Recommendations](#recommendations)
 - [Installation](#installation)
 - [Overview](#overview)
@@ -37,7 +38,7 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
     - [EnableDynamicLoading](#enabledynamicloading)
     - [ProjectReference](#projectreference)
     - [PackageReference](#packagereference)
-- [Samples]
+- [Samples](#samples)
 - [References](#references)
 - [Contribution](#contribution)
 
@@ -60,8 +61,8 @@ This library contains these limitations:
 
 ## Why did I create this library?
 
-- I designed this library for use in the [DentallApp](https://github.com/DentallApp/back-end) project and for other projects according to my needs.
-- I tried many frameworks related to plugins but none of them worked as it should. I had a lot of problems.
+- I designed this library for use it in the [DentallApp](https://github.com/DentallApp/back-end) project and for other projects according to my needs.
+- I have tested many frameworks related to plugins but none of them worked as it should. I had a lot of problems.
 - I wanted to share my knowledge with the community. I love open source.
 - I'm a big fan of plugin-based architecture. I always had the desire to create my own plugin system ever since I was playing [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas).
 
@@ -69,13 +70,75 @@ This library contains these limitations:
 
 ## What is Plug-in Architecture?
 
-Plug-in Architecture or also known as *Microkernel Architecture*, is an architectural pattern..
+Plug-in Architecture or also known as *Microkernel Architecture*, is an architectural pattern that allows extending the functionalities of a core system without having to modify it or know how it works.
 
-### Benefits
+There are three components for this pattern:
+- **Core system (or also called host application):** It represents an executable that contains the basic functionalities and is also responsible for loading the plugins (only those that are necessary).
+- **Contracts:** It represents a well-defined API that allows communication between the core system and plugins.
 
-### Disadvantages
+  Core system don't know anything about the plugins. It does not know of their existence. That's why it needs contracts.
+- **Plugins:** It represents optional modules whose sole purpose is to extend the core system.
+
+  Plugins don't know anything about the core system. They only comply with the contract.
+
+When you implement this pattern you can add, remove and modify plug-in modules without affecting the core system. 
+
+For more information, read this [article](https://medium.com/omarelgabrys-blog/plug-in-architecture-dec207291800).
+
+### What problem does it solve?
+
+How do you add functionality to the core system?
+
+Well, you need to read the core system source code and understand how it works, and you need to understand the overall structure of the core system.
+
+What this pattern is trying to solve, is that through **plug-in modules** you can extend the core system without knowing anything about the core system. 
+
+### Where can I apply it?
+
+**An example where this pattern can be applied is this:**
+
+An ERP software has many modules such as accounting, project management, payroll, treasury, sales, among others.
+
+However, what happens if the customer does not need all the modules? What if the customer only needs the accounting module? 
+
+That's where the plugin-based architecture comes in. You can make your system flexible by converting your modules into plug-ins. This way the customer will not have access to other functionalities, only the ones he has purchased.
+
+This is amazing, because if your core system has a configuration file, you can write there the modules to be loaded for this customer. Oh yeah!
+
+This was just one example, there are surely many more. 
+
+### Technical challenges
+
+When implementing this pattern in .NET there can be a number of technical challenges:
+
+- Define the API that is shared between the core system and the plugins. The API must be stable enough; otherwise, it may lead to breaking changes, so this will affect all plugins.
+
+- Resolve the dependencies of each plugin; failure to do so may cause errors when running the core system. In this case you should read about [AssemblyDependencyResolver](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblydependencyresolver?view=net-8.0).
+
+- Several plugin can use the same dependency but with different version. Therefore, the plugins must be isolated in different contexts. In this case you should read about [AssemblyLoadContext](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext?view=net-8.0).
+
+- There are cases where the core system and plugins reference the same dependency, so in each output directory there will be a  copy of that dependency. 
+  This can cause fatal errors when running the core system.
+
+  *Example:* *Could not load type 'Example.Contracts.ICommand' from assembly 'MyPlugin1'*
+
+The last challenge is the most common problem when implementing this pattern in .NET, because you have to understand how the `AssemblyLoadContext` type works. This [article](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3) explains it very well.
 
 ### Recommendations
+
+Do not implement this pattern from the beginning of development. Do not. Remember the technical challenges mentioned above that you may face.
+
+I recommend that you start with a basic architecture, on which it is easy to evolve. If your feature modules are decoupled from each other and have high cohesion, it will be very easy to convert those modules as plug-ins when needed.
+
+> High cohesion and low coupling. Why?
+
+If the related elements of a feature are scattered in other modules, it will be difficult to convert the features module into a plugin. This is common when using **technical layers** such as *Controllers*, *Services*, *Repositories* and *DTOs*, so the code of each feature is scattered and it is more complicated to apply the Plug-in pattern in this case because you need to move each related element of a feature to its own project. To avoid this, it is advisable to organize the code by feature (Vertical Slice Architecture can help here).
+
+You can have high cohesion but high coupling, so if you have a features module that depends on five other modules, you may face a big problem: cyclic dependency, which makes it difficult to isolate your features module as a plugin. 
+
+For example, if module A depends on B, C, D and, in turn, these depend on A, how will you be able to isolate A in a new project? I can't isolate it because B, C, D depend on A.
+
+For this reason it is essential to have a good project planning from the beginning. Don't go straight to coding, don't do it, plan what to do first.
 
 ## Installation
 
@@ -364,7 +427,7 @@ The .props file could look like this:
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\Contracts\Contracts.csproj">
+    <ProjectReference Include="$(ProjectRootDir)/src/Contracts/Contracts.csproj">
       <Private>false</Private>
       <ExcludeAssets>runtime</ExcludeAssets>
     </ProjectReference>
@@ -427,7 +490,7 @@ This tag is necessary because the third-party dependencies used by the plugin mu
 
 #### ProjectReference
 ```xml
-<ProjectReference Include="..\..\Contracts\Contracts.csproj">
+<ProjectReference Include="$(ProjectRootDir)/src/Contracts/Contracts.csproj">
     <Private>false</Private>
     <ExcludeAssets>runtime</ExcludeAssets>
 </ProjectReference>
@@ -460,6 +523,26 @@ All plugins must reference the CPlugin.Net.Attributes package, however, you shou
 See [Understand Advanced AssemblyLoadContext with C#](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3)
 
 ### Copy plugins to publishing directory
+
+You can copy the plugins to the publishing directory of the host application.
+
+Add this in the host application .csproj file:
+```xml
+<ItemGroup>
+  <!-- 
+    Copy the plugins directory to the publish directory.
+    This copies the directories and subdirectories (including files with extension) 
+    from the plugins folder to the publish directory.
+    For this to work, the plug-ins must be compiled.
+  -->
+  <Content 
+    Include="bin\$(Configuration)\$(TargetFramework)\plugins\**" 
+    CopyToPublishDirectory="PreserveNewest"
+    TargetPath="plugins\%(RecursiveDir)\%(Filename)%(Extension)"
+  />
+</ItemGroup>
+```
+Do not forget to compile the plugins before publishing. The easiest way is to have a solution file (.sln) with all the plugins so you can compile it at once.
 
 ## Samples
 
