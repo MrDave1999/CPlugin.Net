@@ -38,6 +38,7 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
     - [EnableDynamicLoading](#enabledynamicloading)
     - [ProjectReference](#projectreference)
     - [PackageReference](#packagereference)
+  - [Copy plugins to publishing directory](#copy-plugins-to-publishing-directory)
 - [Samples](#samples)
 - [References](#references)
 - [Contribution](#contribution)
