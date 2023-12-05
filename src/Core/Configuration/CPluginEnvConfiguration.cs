@@ -8,7 +8,7 @@ namespace CPlugin.Net;
 /// Represents a configuration to get the plugin files from an environment variable.
 /// </summary>
 /// <remarks>
-/// The variable must be called <c>PLUGINS</c> and its value must be a string separated by spaces.
+/// The variable must be called <c>PLUGINS</c> and its value must be a string separated by spaces or new lines.
 /// <para>Example:</para>
 /// <c>PLUGINS=MyPlugin1.dll MyPlugin2.dll</c>
 /// </remarks>
