@@ -18,7 +18,6 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
 - [Limitations](#limitations)
 - [Why did I create this library?](#why-did-i-create-this-library)
 - [What is Plug-in Architecture?](#what-is-plug-in-architecture)
-  - [What problem does it solve?](#what-problem-does-it-solve)
   - [Where can I apply it?](#where-can-i-apply-it)
   - [Technical challenges](#technical-challenges)
   - [Recommendations](#recommendations)
@@ -71,65 +70,51 @@ This library contains these limitations:
 
 ## What is Plug-in Architecture?
 
-Plug-in Architecture or also known as *Microkernel Architecture*, is an architectural pattern that allows extending the functionalities of a core system without having to modify it or know how it works.
+It consists of a host application (*or a main application*) provides public API which the plug-in can use, including a way for plug-ins to load into the host application. Plug-ins depend on the services (public API) provided by the host application and do not usually work by themselves. Conversely, the host application operates independently of the plug-ins, making it possible for developers to create plug-in projects without making changes to the host application or knowing how it works.
+
+**Rules to be complied with:**
+- The host application must not be coupled to any plug-in. It must not know about their existence.
+- The host application must be able to run even if no plug-in is loaded.
+- Plug-ins only depend on the public API that exposes the host application.
 
 There are three components for this pattern:
-- **Core system (or also called host application):** It represents an executable that contains the basic functionalities and is also responsible for loading the plugins (only those that are necessary).
-- **Contracts:** It represents a well-defined API that allows communication between the core system and plugins.
-
-  Core system don't know anything about the plugins. It does not know of their existence. That's why it needs contracts.
-- **Plugins:** It represents optional modules whose sole purpose is to extend the core system.
-
-  Plugins don't know anything about the core system. They only comply with the contract.
-
-When you implement this pattern you can add, remove and modify plug-in modules without affecting the core system. 
-
-For more information, read this [article](https://medium.com/omarelgabrys-blog/plug-in-architecture-dec207291800).
-
-### What problem does it solve?
-
-How do you add functionality to the core system?
-
-Well, you need to read the core system source code and understand how it works, and you need to understand the overall structure of the core system.
-
-What this pattern is trying to solve, is that through **plug-in modules** you can extend the core system without knowing anything about the core system. 
+- **Host application:** Represents the main application that contains the basic functionalities and is also responsible for loading the plug-ins (only those that are necessary).
+- **Contracts:** Represents a well-defined API that allows communication between the host application and the plug-ins.
+- **Plug-ins:** Represents optional modules whose sole purpose is to add more functionality to the host application without having to make changes to its source code. This definition follows the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
 
 ### Where can I apply it?
 
-**An example where this pattern can be applied is this:**
+> An example where this pattern can be applied is this:
 
-An ERP software has many modules such as accounting, project management, payroll, treasury, sales, among others.
-
-However, what happens if the customer does not need all the modules? What if the customer only needs the accounting module? 
+An ERP software has many modules such as accounting, project management, payroll, treasury, sales, among others. However, what happens if the customer does not need all the modules? What if the customer only needs the accounting module? 
 
 That's where the plugin-based architecture comes in. You can make your system flexible by converting your modules into plug-ins. This way the customer will not have access to other functionalities, only the ones he has purchased.
 
-This is amazing, because if your core system has a configuration file, you can write there the modules to be loaded for this customer. Oh yeah!
+This is amazing, because if your main application has a configuration file, you can write there the plug-ins to be loaded for this customer. Oh yeah!
 
-This was just one example, there are surely many more. 
+This also has the benefit of reducing the size of an application by not loading unused features.
 
 ### Technical challenges
 
 When implementing this pattern in .NET there can be a number of technical challenges:
 
-- Define the API that is shared between the core system and the plugins. The API must be stable enough; otherwise, it may lead to breaking changes, so this will affect all plugins.
+- Define the API that is shared between the host application and the plugins. The API must be stable enough; otherwise, it may lead to breaking changes, so this will affect all plugins.
 
-- Resolve the dependencies of each plugin; failure to do so may cause errors when running the core system. In this case you should read about [AssemblyDependencyResolver](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblydependencyresolver?view=net-8.0).
+- Resolve the dependencies of each plugin; failure to do so may cause errors when running the host application. In this case you should read about [AssemblyDependencyResolver](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblydependencyresolver?view=net-8.0).
 
 - Several plugin can use the same dependency but with different version. Therefore, the plugins must be isolated in different contexts. In this case you should read about [AssemblyLoadContext](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext?view=net-8.0).
 
-- There are cases where the core system and plugins reference the same dependency, so in each output directory there will be a  copy of that dependency. 
-  This can cause fatal errors when running the core system.
+- Ideally, plugins should not depend on each other (reduce coupling), but in such cases a mechanism must be found that allows them to communicate with each other (e.g. a message broker).
+
+- There are cases where the host application and plugins reference the same dependency, so in each output directory there will be a copy of that dependency. This can cause fatal errors when running the host application.
 
   *Example:* *Could not load type 'Example.Contracts.ICommand' from assembly 'MyPlugin1'*
 
-The last challenge is the most common problem when implementing this pattern in .NET, because you have to understand how the `AssemblyLoadContext` type works. This [article](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3) explains it very well.
+To correctly implement this pattern in .NET, it is necessary to know how `AssemblyLoadContext` works. This [article](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3) explains it very well.
 
 ### Recommendations
 
-Do not implement this pattern from the beginning of development. Do not. Remember the technical challenges mentioned above that you may face.
-
-I recommend that you start with a basic architecture, on which it is easy to evolve. If your feature modules are decoupled from each other and have high cohesion, it will be very easy to convert those modules as plug-ins when needed.
+Do not implement this pattern from the beginning of development. I recommend that you start with a basic architecture, on which it is easy to evolve. If your feature modules are decoupled from each other and have high cohesion, it will be very easy to convert those modules as plug-ins when needed.
 
 > High cohesion and low coupling. Why?
 
@@ -512,20 +497,15 @@ These tags are necessary because it is not recommended to share assemblies betwe
 
 Therefore the assembly as Contracts.dll should only be copied to the output directory of the host application so that it is loaded only in the default context.
 
-See [Understand Advanced AssemblyLoadContext with C#](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3)
-
 #### PackageReference
 ```xml
 <PackageReference Include="CPlugin.Net.Attributes" Version="1.0.0">
     <ExcludeAssets>runtime</ExcludeAssets>
 </PackageReference>
 ```
-
 `<ExcludeAssets>runtime</ExcludeAssets>`. This avoids having to copy `CPlugin.Net.Attributes.dll` and its dependencies to the plugin output directory.
 
 All plugins must reference the CPlugin.Net.Attributes package, however, you should not copy the `CPlugin.Net.Attributes.dll` assembly to the output directory of the plugin project. This is because the host application already contains such an assembly.
-
-See [Understand Advanced AssemblyLoadContext with C#](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3)
 
 ### Copy plugins to publishing directory
 
@@ -564,6 +544,8 @@ You can find a complete and functional example in these projects:
 - [Create a .NET Core application with plugins](https://learn.microsoft.com/en-us/dotnet/core/tutorials/creating-app-with-plugin-support)
 - [A sample plugin model for ASP.NET Core applications](https://github.com/davidfowl/WebApplicationPlugins#webapplicationplugins)
 - [Understand Advanced AssemblyLoadContext with C#](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3)
+- [Plug-in Architecture](https://medium.com/omarelgabrys-blog/plug-in-architecture-dec207291800)
+- [Plug-in (computing)](https://en.wikipedia.org/wiki/Plug-in_(computing))
 
 ## Contribution
 
