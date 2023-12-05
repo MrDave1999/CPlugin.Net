@@ -34,8 +34,7 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
     - [ProjectRootDir](#projectrootdir)
     - [OutDir](#outdir)
     - [EnableDynamicLoading](#enabledynamicloading)
-    - [ProjectReference](#projectreference)
-    - [PackageReference](#packagereference)
+    - [References to projects](#references-to-projects)
   - [Copy plugins to publishing directory](#copy-plugins-to-publishing-directory)
 - [Samples](#samples)
 - [References](#references)
@@ -64,11 +63,11 @@ This library contains these limitations:
 - I wanted to share my knowledge with the community. I love open source.
 - I'm a big fan of plugin-based architecture. I always had the desire to create my own plugin system ever since I was playing [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas).
 
-  In SA-MP it is possible to extend the functionalities provided by the game server (sampserver) without having to know its source code, thanks to the plugins. Amazing!
+  In SA-MP it is possible to extend the functionalities provided by the game server (samp-server) without having to know its source code. Just go to the `server.cfg` file and specify the plug-ins to load and that's all. Amazing!
 
 ## What is Plug-in Architecture?
 
-It consists of a host application (*or a main application*) provides public API which the plug-in can use, including a way for plug-ins to load into the host application. Plug-ins depend on the services (public API) provided by the host application and do not usually work by themselves. Conversely, the host application operates independently of the plug-ins, making it possible for developers to create plug-in projects without making changes to the host application or knowing how it works.
+It consists of a host application (*or a main application*) that provides public API which the plug-in can use, including a way for plug-ins to load into the host application. Plug-ins depend on the services (public API) provided by the host application and do not usually work by themselves. Conversely, the host application operates independently of the plug-ins, making it possible for developers to create plug-in projects without making changes to the host application or knowing how it works.
 
 **Rules to be complied with:**
 - The host application must not be coupled to any plug-in. It must not know about their existence.
@@ -104,9 +103,7 @@ When implementing this pattern in .NET there can be a number of technical challe
 
 - Ideally, plugins should not depend on each other (reduce coupling), but in such cases a mechanism must be found that allows them to communicate with each other (e.g. a message broker).
 
-- There are cases where the host application and plugins reference the same dependency, so in each output directory there will be a copy of that dependency. This can cause fatal errors when running the host application.
-
-  *Example:* *Could not load type 'Example.Contracts.ICommand' from assembly 'MyPlugin1'*
+- There are cases where the host application and the plugins have a reference to the same version of a dependency, so in their output directories they will have a copy of the same dependency. This may cause unexpected behavior when running the host application. See this [thread](https://stackoverflow.com/q/75435015) or [this one too](https://github.com/MrDave1999/CPlugin.Net/issues/27).
 
 To correctly implement this pattern in .NET, it is necessary to know how `AssemblyLoadContext` works. This [article](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3) explains it very well.
 
@@ -462,7 +459,7 @@ See [EnableDynamicLoading](https://learn.microsoft.com/en-us/dotnet/core/project
 
 This tag is necessary because the third-party dependencies used by the plugin must be copied to the output directory; otherwise, the host application may throw an exception when loading the plugins, because the NuGet references are not found.
 
-#### ProjectReference
+#### References to projects
 ```xml
 <ProjectReference Include="$(ProjectRootDir)/src/Contracts/Contracts.csproj">
     <Private>false</Private>
@@ -473,15 +470,10 @@ These are the contracts shared between the host application and the plugins and 
 
 `<Private>false</Private>`. This tells MSBuild not to copy **Contracts.dll** to the plugin output directory.
 
-`<ExcludeAssets>runtime</ExcludeAssets>`. This setting has the same effect as `<Private>false</Private>` but works on package references 
-that the Contracts project or one of its dependencies may include.
+`<ExcludeAssets>runtime</ExcludeAssets>`. This setting has the same effect as `<Private>false</Private>` but works on package references that the Contracts project or one of its dependencies may include.
 
-These tags are necessary because it is not recommended to share assemblies between the host application and the plugins. For example, the assembly like Contracts.dll is used by both the host application and plugins, if you share it, you may get the following confusing error when running the host application:
-> Unable to cast object of type 'Contracts.ICommand' to type 'Contracts.ICommand'.
+The `Contracts.dll` assembly must only be copied to the output directory of the host application; otherwise, the [FindSubtypesOf](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.TypeFinder.html) method will always return an empty enumerable.
 
-Therefore the assembly as Contracts.dll should only be copied to the output directory of the host application so that it is loaded only in the default context.
-
-#### PackageReference
 ```xml
 <PackageReference Include="CPlugin.Net.Attributes" Version="1.0.0">
     <ExcludeAssets>runtime</ExcludeAssets>
@@ -489,7 +481,9 @@ Therefore the assembly as Contracts.dll should only be copied to the output dire
 ```
 `<ExcludeAssets>runtime</ExcludeAssets>`. This avoids having to copy `CPlugin.Net.Attributes.dll` and its dependencies to the plugin output directory.
 
-All plugins must reference the CPlugin.Net.Attributes package, however, you should not copy the `CPlugin.Net.Attributes.dll` assembly to the output directory of the plugin project. This is because the host application already contains such an assembly.
+Some plugins have a reference to the `CPlugin.Net.Attributes` package, so you should not copy the `CPlugin.Net.Attributes.dll` assembly to the plugin output directory. This is because the host application already contains such an assembly; otherwise, the [FindSubtypesOf](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.TypeFinder.html) method will always return an empty enumerable.
+
+See this thread: [Why can't I copy assemblies like Example.Contracts.dll and CPlugin.Net.Attributes.dll to the plugin output directory?](https://github.com/MrDave1999/CPlugin.Net/issues/27)
 
 ### Copy plugins to publishing directory
 
