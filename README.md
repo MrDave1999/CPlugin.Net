@@ -20,7 +20,6 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
 - [What is Plug-in Architecture?](#what-is-plug-in-architecture)
   - [Where can I apply it?](#where-can-i-apply-it)
   - [Technical challenges](#technical-challenges)
-  - [Recommendations](#recommendations)
 - [Installation](#installation)
 - [Overview](#overview)
   - [Get plugin names from .json file](#get-plugin-names-from-json-file)
@@ -88,7 +87,7 @@ There are three components for this pattern:
 
 An ERP software has many modules such as accounting, project management, payroll, treasury, sales, among others. However, what happens if the customer does not need all the modules? What if the customer only needs the accounting module? 
 
-That's where the plugin-based architecture comes in. You can make your system flexible by converting your modules into plug-ins. This way the customer will not have access to other functionalities, only the ones he has purchased.
+That's where the plugin-based architecture comes in. You can make your system flexible by converting your modules into plug-ins. This way the customer will not have access to other functionalities, only the ones he/she has purchased.
 
 This is amazing, because if your main application has a configuration file, you can write there the plug-ins to be loaded for this customer. Oh yeah!
 
@@ -111,20 +110,6 @@ When implementing this pattern in .NET there can be a number of technical challe
   *Example:* *Could not load type 'Example.Contracts.ICommand' from assembly 'MyPlugin1'*
 
 To correctly implement this pattern in .NET, it is necessary to know how `AssemblyLoadContext` works. This [article](https://tsuyoshiushio.medium.com/understand-advanced-assemblyloadcontext-with-c-16a9d0cfeae3) explains it very well.
-
-### Recommendations
-
-Do not implement this pattern from the beginning of development. I recommend that you start with a basic architecture, on which it is easy to evolve. If your feature modules are decoupled from each other and have high cohesion, it will be very easy to convert those modules as plug-ins when needed.
-
-> High cohesion and low coupling. Why?
-
-If the related elements of a feature are scattered in other modules, it will be difficult to convert the features module into a plugin. This is common when using **technical layers** such as *Controllers*, *Services*, *Repositories* and *DTOs*, so the code of each feature is scattered and it is more complicated to apply the Plug-in pattern in this case because you need to move each related element of a feature to its own project. To avoid this, it is advisable to organize the code by feature (Vertical Slice Architecture can help here).
-
-You can have high cohesion but high coupling, so if you have a features module that depends on five other modules, you may face a big problem: cyclic dependency, which makes it difficult to isolate your features module as a plugin. 
-
-For example, if module A depends on B, C, D and, in turn, these depend on A, how will you be able to isolate A in a new project? I can't isolate it because B, C, D depend on A.
-
-For this reason it is essential to have a good project planning from the beginning. Don't go straight to coding, don't do it, plan what to do first.
 
 ## Installation
 
