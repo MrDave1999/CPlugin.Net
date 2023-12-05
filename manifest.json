@@ -17,18 +17,6 @@
       "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html",
-          "hash": "wbbMr3n2J2BbBBy4/xSZZRmS5DuHCm84/5hLUXRZZAI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.html",
           "hash": "lOEAZd2yb45wnO1bo4oVlpags8GtDXAzpayhH9rd+Qs="
         }
@@ -50,11 +38,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html",
+          "hash": "wbbMr3n2J2BbBBy4/xSZZRmS5DuHCm84/5hLUXRZZAI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.html",
-          "hash": "zIIk3/tKLnlpoxub7vtZLB2/FhuNzs9cUB173PiYl0M="
+          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.GetPluginFiles.html",
+          "hash": "lJaMMbNPIRndcMOUl4jolK2nzd2sNrSuIqnMJxcciCM="
         }
       },
       "is_incremental": false,
@@ -77,20 +77,8 @@
       "source_relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.GetPluginFiles.html",
-          "hash": "lJaMMbNPIRndcMOUl4jolK2nzd2sNrSuIqnMJxcciCM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.-ctor.html",
-          "hash": "s7qxkgzwX3oUSsypKhrV/MHgnYJEHUj2B2NSbcCcYGo="
+          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.html",
+          "hash": "x9XAAWmacJtJoSKbpf+wgf31Nk9Kcau+uGnZRxD8pzc="
         }
       },
       "is_incremental": false,
@@ -122,11 +110,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/CPlugin.Net.PluginAttribute.yml",
+      "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginAttribute.PluginType.html",
-          "hash": "ZQFXWMYP42dmMQRvLtHzrMGLqOt1PeVfzh9610adJGA="
+          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.-ctor.html",
+          "hash": "s7qxkgzwX3oUSsypKhrV/MHgnYJEHUj2B2NSbcCcYGo="
         }
       },
       "is_incremental": false,
@@ -158,11 +146,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/CPlugin.Net.PluginAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CPlugin.Net.PluginAttribute.PluginType.html",
+          "hash": "ZQFXWMYP42dmMQRvLtHzrMGLqOt1PeVfzh9610adJGA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/CPlugin.Net.PluginLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginLoader.Assemblies.html",
-          "hash": "QHkAlWiBHkHwY0itw+6hUxFVH02v7yDwqkAybq2Xtpg="
+          "relative_path": "api/CPlugin.Net.PluginLoader.html",
+          "hash": "wi2AmLU+5Lb+mu/MwGWEHms6b+QDa7OAglVk5loivUY="
         }
       },
       "is_incremental": false,
@@ -185,8 +185,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginLoader.html",
-          "hash": "wi2AmLU+5Lb+mu/MwGWEHms6b+QDa7OAglVk5loivUY="
+          "relative_path": "api/CPlugin.Net.PluginLoader.Assemblies.html",
+          "hash": "QHkAlWiBHkHwY0itw+6hUxFVH02v7yDwqkAybq2Xtpg="
         }
       },
       "is_incremental": false,
@@ -278,13 +278,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 1,
-          "skipped_file_count": 0
+          "skipped_file_count": 1
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 7,
-          "skipped_file_count": 6
+          "skipped_file_count": 5
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
