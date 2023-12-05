@@ -61,7 +61,6 @@ This library contains these limitations:
 ## Why did I create this library?
 
 - I designed this library for use it in the [DentallApp](https://github.com/DentallApp/back-end) project and for other projects according to my needs.
-- I have tested many frameworks related to plugins but none of them worked as it should. I had a lot of problems.
 - I wanted to share my knowledge with the community. I love open source.
 - I'm a big fan of plugin-based architecture. I always had the desire to create my own plugin system ever since I was playing [SA-MP](https://www.sa-mp.mp) (San Andreas Multiplayer, a multiplayer mod for GTA San Andreas).
 
@@ -115,13 +114,13 @@ To correctly implement this pattern in .NET, it is necessary to know how `Assemb
 
 Install the main package using dotnet CLI:
 ```sh
-dotnet add package CPlugin.Net --prerelease
+dotnet add package CPlugin.Net
 ```
 This package was designed to be used in host applications such as a web api or a console application.
 
 You must also install this secondary package that will be used in your plugins:
 ```sh
-dotnet add package CPlugin.Net.Attributes --prerelease
+dotnet add package CPlugin.Net.Attributes
 ```
 This package provides only one type: [PluginAttribute](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.PluginAttribute.html) and is used only in plugins.
 
