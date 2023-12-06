@@ -15,7 +15,8 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpGet]
-    public List<Employee> GetAll() => _employees;
+    public ListedResult<Employee> GetAll() 
+        => Result.ObtainedResources(_employees);
 
     [HttpPost]
     public Result Create([FromBody]Employee employee)
