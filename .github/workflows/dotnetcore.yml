@@ -22,4 +22,8 @@ jobs:
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     - name: Test 
-      run: dotnet test ./tests/CPlugin.Net/CPlugin.Net.Tests.csproj
+      run: |
+        dotnet test ./tests/CPlugin.Net/CPlugin.Net.Tests.csproj
+        dotnet build ./samples/Plugins/AppointmentPlugin/Example.AppointmentPlugin.csproj
+        dotnet build ./samples/Plugins/PersonPlugin/Example.PersonPlugin.csproj
+        dotnet test ./samples/TestWebApi/Example.TestWebApi.csproj
