@@ -45,6 +45,8 @@ public static class TypeFinder
         return GetSubtypesOf<TSupertype>(assemblies);
     }
 
+    // The logic of this method needs to be separate to ensure
+    // that the validations of FindSubtypesOf are executed immediately.
     private static IEnumerable<TSupertype> GetSubtypesOf<TSupertype>(IEnumerable<Assembly> assemblies) 
         where TSupertype : class
     {
