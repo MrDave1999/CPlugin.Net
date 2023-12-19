@@ -9,5 +9,5 @@ public class PersonController : ControllerBase
         => service.GetAll();
 
     [HttpPost]
-    public Result Create() => Result.Success();
+    public ActionResult<Result> Create() => Result.CreatedResource().ToActionResult();
 }
