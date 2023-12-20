@@ -26,6 +26,13 @@
       CopyToOutputDirectory="PreserveNewest"
       TargetPath="plugins\%(RecursiveDir)\%(Filename)%(Extension)"
     />
+
+    <!-- Copy the plugins directory from Example.HostConsoleApp to the output directory of Example.TestWebApi. -->
+    <Content
+      Include="..\HostApplications\ConsoleApp\bin\$(Configuration)\$(TargetFramework)\plugins\**"
+      CopyToOutputDirectory="PreserveNewest"
+      TargetPath="plugins\%(RecursiveDir)\%(Filename)%(Extension)"
+    />
   </ItemGroup>
 
 </Project>
