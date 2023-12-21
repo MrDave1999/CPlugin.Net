@@ -31,18 +31,14 @@ public class TypeFinderTests
         {
             typeof(TypeFinderTests).Assembly
         };
-        int expectedValue = 1;
+        int[] expectedValues = { 1, 1 };
 
         // Act
         var runners = TypeFinder.FindSubtypesOf<IRunner>(assemblies);
+        int[] values = runners.Select(runner => runner.Run()).ToArray();
 
-        // Asserts
-        runners.Should().HaveCount(2);
-        foreach(IRunner runner in runners)
-        {
-            int value = runner.Run();
-            value.Should().Be(expectedValue);
-        }
+        // Assert
+        values.Should().BeEquivalentTo(expectedValues);
     }
 
     [Test]

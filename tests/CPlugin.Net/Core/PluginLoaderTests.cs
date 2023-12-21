@@ -21,8 +21,8 @@ public class PluginLoaderTests
         int expectedCommands = 2;
         var expectedVersions = new[]
         {
-            "Version=12.0.0.0",
-            "Version=13.0.0.0"
+            "Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed",
+            "Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed"
         };
 
         // Act
@@ -31,11 +31,8 @@ public class PluginLoaderTests
         var versions = commands.Select(command =>
         {
             var json = command.Execute();
-            // Example: Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=null[0]
-            var version = JsonConvert.DeserializeObject<Info>(json).Version;
-            // Example: Version=12.0.0.0
-            return version.Split(",")[1].Trim();
-        }).ToList();
+            return JsonConvert.DeserializeObject<Info>(json).Version;
+        }).ToArray();
 
         // Asserts
         commands.Should().HaveCount(expectedCommands);
