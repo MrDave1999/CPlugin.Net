@@ -20,14 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Copy the plugins directory from Example.HostWebApi to the output directory of Example.TestWebApi. -->
+    <!-- Copy the plugins directory from Example.HostWebApi to the output directory of Example.Test. -->
     <Content
       Include="..\HostApplications\WebApi\bin\$(Configuration)\$(TargetFramework)\plugins\**"
       CopyToOutputDirectory="PreserveNewest"
       TargetPath="plugins\%(RecursiveDir)\%(Filename)%(Extension)"
     />
 
-    <!-- Copy the plugins directory from Example.HostConsoleApp to the output directory of Example.TestWebApi. -->
+    <!-- Copy the plugins directory from Example.HostConsoleApp to the output directory of Example.Test. -->
     <Content
       Include="..\HostApplications\ConsoleApp\bin\$(Configuration)\$(TargetFramework)\plugins\**"
       CopyToOutputDirectory="PreserveNewest"

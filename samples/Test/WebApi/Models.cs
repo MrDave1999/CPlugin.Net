@@ -1,4 +1,4 @@
-﻿namespace Example.TestWebApi;
+﻿namespace Example.Test.WebApi;
 
 public class GetAppointmentResponse
 {

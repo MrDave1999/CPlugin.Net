@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.SharedEntities", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Contracts", "..\Contracts\Example.Contracts.csproj", "{AE862E87-2C29-479B-864C-E3309881E36D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.TestWebApi", "Example.TestWebApi.csproj", "{EE7F436B-4A93-4C1C-A3B3-1E19F17FBF3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Test", "Example.Test.csproj", "{EE7F436B-4A93-4C1C-A3B3-1E19F17FBF3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

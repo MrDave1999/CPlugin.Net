@@ -4,3 +4,5 @@ global using Microsoft.AspNetCore.Mvc.Testing;
 global using SimpleResults;
 global using System.Net;
 global using Example.WebApi;
+global using CPlugin.Net;
+global using Example.Contracts;
