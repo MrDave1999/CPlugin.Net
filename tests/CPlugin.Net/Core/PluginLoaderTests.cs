@@ -8,7 +8,7 @@ public class PluginLoaderTests
     }
 
     [Test]
-    public void Load_WhenPluginsAreLoaded_ShouldReturnsEnumerable()
+    public void Load_WhenPluginsAreFound_ShouldBeLoadedIntoMemory()
     {
         // Arrange
         var value =
