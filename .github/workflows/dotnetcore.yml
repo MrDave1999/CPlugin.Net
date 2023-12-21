@@ -26,4 +26,6 @@ jobs:
         dotnet test ./tests/CPlugin.Net/CPlugin.Net.Tests.csproj
         dotnet build ./samples/Plugins/AppointmentPlugin/Example.AppointmentPlugin.csproj
         dotnet build ./samples/Plugins/PersonPlugin/Example.PersonPlugin.csproj
-        dotnet test ./samples/TestWebApi/Example.TestWebApi.csproj
+        dotnet build ./samples/Plugins/JsonPlugin/Example.JsonPlugin.csproj
+        dotnet build ./samples/Plugins/OldJsonPlugin/Example.OldJsonPlugin.csproj
+        dotnet test ./samples/Test/Example.Test.csproj
