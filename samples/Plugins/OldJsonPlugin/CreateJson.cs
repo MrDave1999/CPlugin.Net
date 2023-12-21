@@ -6,6 +6,7 @@ public class CreateJson : ICommand
 {
     public string Name => "oldjson";
     public string Description => "Outputs JSON value.";
+    public string Version => typeof(JsonConvert).Assembly.FullName;
 
     private class Info
     {

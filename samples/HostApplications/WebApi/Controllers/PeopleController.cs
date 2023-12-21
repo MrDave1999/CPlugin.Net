@@ -11,5 +11,5 @@ public class PeopleController
     public Result<List<Person>> GetAll() => Result.Success(_persons);
 
     [HttpPost]
-    public Result Create() => Result.Success();
+    public ActionResult<Result> Create() => Result.CreatedResource().ToActionResult();
 }

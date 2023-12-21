@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SimpleResults" Version="0.3.0-alpha" />
+    <PackageReference Include="SimpleResults.AspNetCore" Version="0.3.0-alpha" />
   </ItemGroup>
   
 </Project>
