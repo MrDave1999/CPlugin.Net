@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.AppointmentPlugin",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.PersonPlugin", "samples\Plugins\PersonPlugin\Example.PersonPlugin.csproj", "{18534944-583B-4924-AC5B-E0655FD92AAC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example.Test", "samples\Test\Example.Test.csproj", "{1E64908D-DC48-4B83-BB25-CF36821EB37F}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject.JsonPlugin", "tests\Plugins\TestProject.JsonPlugin\TestProject.JsonPlugin.csproj", "{0F27C776-F284-4C94-86C9-0FF089245E13}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject.OldJsonPlugin", "tests\Plugins\TestProject.OldJsonPlugin\TestProject.OldJsonPlugin.csproj", "{BCE8FA91-AF31-49DD-BED8-E60A46915400}"
@@ -120,6 +122,10 @@ Global
 		{0BCD3305-F0D5-43E6-B879-EEF0827558A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BCD3305-F0D5-43E6-B879-EEF0827558A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BCD3305-F0D5-43E6-B879-EEF0827558A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E64908D-DC48-4B83-BB25-CF36821EB37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E64908D-DC48-4B83-BB25-CF36821EB37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E64908D-DC48-4B83-BB25-CF36821EB37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E64908D-DC48-4B83-BB25-CF36821EB37F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
