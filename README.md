@@ -490,7 +490,7 @@ See this thread: [Why can't I copy assemblies like Example.Contracts.dll and CPl
 
 ### Copy plugins to publishing directory
 
-You need to add the package called [CopyPluginsToPublishDirectory](https://www.nuget.org/packages/CopyPluginsToPublishDirectory) in the project file of the host application.
+You need to add the package called [CopyPluginsToPublishDirectory](https://www.nuget.org/packages/CopyPluginsToPublishDirectory) in the project file of the host application. This package allows to copy the `plugins` directory from the output directory (e.g. bin/Debug/net8.0) to the publish directory.
 
 **Example:**
 ```xml
