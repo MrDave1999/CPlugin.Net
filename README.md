@@ -6,6 +6,9 @@
 [![CPlugin.Net.Attributes](https://img.shields.io/nuget/vpre/CPlugin.Net.Attributes?label=CPlugin.Net.Attributes%20-%20nuget&color=red)](https://www.nuget.org/packages/CPlugin.Net.Attributes)
 [![downloads](https://img.shields.io/nuget/dt/CPlugin.Net.Attributes?color=yellow)](https://www.nuget.org/packages/CPlugin.Net.Attributes)
 
+[![CopyPluginsToPublishDirectory](https://img.shields.io/nuget/vpre/CopyPluginsToPublishDirectory?label=CopyPluginsToPublishDirectory%20-%20nuget&color=red)](https://www.nuget.org/packages/CopyPluginsToPublishDirectory)
+[![downloads](https://img.shields.io/nuget/dt/CopyPluginsToPublishDirectory?color=yellow)](https://www.nuget.org/packages/CopyPluginsToPublishDirectory)
+
 [![CPlugin.Net-logo](https://raw.githubusercontent.com/MrDave1999/CPlugin.Net/bd7e7c8787e5a1b4987cd5a506e680261dce19b0/plugin-logo.png)](https://github.com/MrDave1999/CPlugin.Net)
 
 A simple library that allows to implement a plugin-based architecture.
@@ -487,25 +490,23 @@ See this thread: [Why can't I copy assemblies like Example.Contracts.dll and CPl
 
 ### Copy plugins to publishing directory
 
-You can copy the plugins to the publishing directory of the host application.
+You need to add the package called [CopyPluginsToPublishDirectory](https://www.nuget.org/packages/CopyPluginsToPublishDirectory) in the project file of the host application.
 
-Add this in the host application .csproj file:
+**Example:**
 ```xml
-<ItemGroup>
-  <!-- 
-    Copy the plugins directory to the publish directory.
-    This copies the directories and subdirectories (including files with extension) 
-    from the plugins folder to the publish directory.
-    For this to work, the plug-ins must be compiled.
-  -->
-  <Content 
-    Include="bin\$(Configuration)\$(TargetFramework)\plugins\**" 
-    CopyToPublishDirectory="PreserveNewest"
-    TargetPath="plugins\%(RecursiveDir)\%(Filename)%(Extension)"
-  />
-</ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CopyPluginsToPublishDirectory" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
 ```
-Do not forget to compile the plugins before publishing. The easiest way is to have a solution file (.sln) with all the plugins so you can compile it at once.
+**NOTE:** Do not forget to compile the plugins before publishing. The easiest way is to have a solution file (.sln) with all the plugins so you can compile it at once.
 
 ## Samples
 
