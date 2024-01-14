@@ -20,7 +20,7 @@
 
     <files>
         <file src="README.md" target="" />
-        <file src="..\..\plugin-icon-nuget.png" target="" />
+        <file src="..\plugin-icon-nuget.png" target="" />
         <file src="build\**" target="build" />
     </files>
 </package>
