@@ -24,6 +24,8 @@ jobs:
     - name: Test 
       run: |
         dotnet test ./tests/CPlugin.Net/CPlugin.Net.Tests.csproj -c Release
+        dotnet publish ./tests/CPlugin.Net/CPlugin.Net.Tests.csproj -c Release -o out
+        dotnet vstest ./out/CPlugin.Net.Tests.dll
         dotnet build ./samples/Plugins/AppointmentPlugin/Example.AppointmentPlugin.csproj -c Release
         dotnet build ./samples/Plugins/PersonPlugin/Example.PersonPlugin.csproj -c Release
         dotnet build ./samples/Plugins/JsonPlugin/Example.JsonPlugin.csproj -c Release
