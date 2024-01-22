@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="CopyPluginsToPublishDirectory" />
     <PackageReference Include="DotEnv.Core" />
+    <PackageReference Include="DotEnv.Core.Props" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
