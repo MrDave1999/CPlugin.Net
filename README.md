@@ -515,7 +515,7 @@ You can find a complete and functional example in these projects:
 - [Example.HostConsoleApp](https://github.com/MrDave1999/CPlugin.Net/tree/master/samples/HostApplications/ConsoleApp)
 - [Example.HostWebApi](https://github.com/MrDave1999/CPlugin.Net/tree/master/samples/HostApplications/WebApi)
 - [Example.Plugins](https://github.com/MrDave1999/CPlugin.Net/tree/master/samples/Plugins)
-- [DentallApp.BackEnd.Host](https://github.com/DentallApp/back-end/blob/dev/src/HostApplication/Startup.cs)
+- [DentallApp.BackEnd.Host](https://github.com/DentallApp/back-end/tree/dev/src/HostApplication)
 - [DentallApp.BackEnd.Plugins](https://github.com/DentallApp/back-end/tree/dev/src/Plugins)
 
 ## References
