@@ -21,7 +21,7 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
 - [Limitations](#limitations)
 - [Why did I create this library?](#why-did-i-create-this-library)
 - [What is Plug-in Architecture?](#what-is-plug-in-architecture)
-  - [Where can I apply it?](#where-can-i-apply-it)
+  - [Where can it be applied?](#where-can-it-be-applied)
   - [Technical challenges](#technical-challenges)
 - [Installation](#installation)
 - [Overview](#overview)
@@ -58,7 +58,6 @@ This library contains these features:
 This library contains these limitations:
 - The plugin loader is not thread-safe.
 - There is no support for unload plugins.
-- And there may be more I don't know about..
 
 ## Why did I create this library?
 
@@ -82,17 +81,42 @@ There are three components for this pattern:
 - **Contracts:** Represents a well-defined API that allows communication between the host application and the plug-ins.
 - **Plug-ins:** Represents optional modules whose sole purpose is to add more functionality to the host application without having to make changes to its source code. This definition follows the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle).
 
-### Where can I apply it?
+### Where can it be applied?
 
-> An example where this pattern can be applied is this:
+Imagine that your application needs to do two things:
+- Send appointment reminders via WhatsApp.
+- Send an email when a user creates an account.
 
-An ERP software has many modules such as accounting, project management, payroll, treasury, sales, among others. However, what happens if the customer does not need all the modules? What if the customer only needs the accounting module? 
+In a production environment you should use a real provider such as Twilio and SendGrid.
 
-That's where the plugin-based architecture comes in. You can make your system flexible by converting your modules into plug-ins. This way the customer will not have access to other functionalities, only the ones he/she has purchased.
+But in a development environment you will want to use a fake provider such as a console logger. The purpose is to avoid having to make configurations to use Twilio and SendGrid when starting development.
 
-This is amazing, because if your main application has a configuration file, you can write there the plug-ins to be loaded for this customer. Oh yeah!
+You could create two plugin projects called:
+- [Plugin.Twilio.WhatsApp](https://github.com/DentallApp/back-end/tree/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Plugins/TwilioWhatsApp)
+- [Plugin.SendGrid.Email](https://github.com/DentallApp/back-end/tree/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Plugins/SendGrid)
 
-This also has the benefit of reducing the size of an application by not loading unused features.
+And load it from a configuration file, such as:
+```json
+{
+  "Plugins": [
+    "Plugin.Twilio.WhatsApp.dll",
+    "Plugin.SendGrid.Email.dll"
+  ]
+}
+```
+
+In your host application you can create two fake providers:
+- [FakeEmailService](https://github.com/DentallApp/back-end/blob/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Infrastructure/Services/FakeEmailService.cs)
+- [FakeInstantMessaging](https://github.com/DentallApp/back-end/blob/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Infrastructure/Services/FakeInstantMessaging.cs) 
+
+Since the host application does not have a direct reference to these plugins, it can load them dynamically. 
+Therefore, if the host application does not load these two plugins, [it may decide to use a fake provider as a console logger](https://github.com/DentallApp/back-end/blob/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/HostApplication/PluginStartup.cs#L19-L21). 
+
+Thanks to the plugin-based architecture, you can easily swap modules without having to make any changes to the host application.
+
+This promotes the [Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), since if you want to add a new email provider such as [Mailgun](https://www.mailgun.com), you can do so without having to modify the existing code. Amazing, right? 
+
+> This real scenario has been applied in this [project](https://github.com/DentallApp/back-end/tree/dev/src).
 
 ### Technical challenges
 
@@ -494,7 +518,7 @@ You need to add the package called [CopyPluginsToPublishDirectory](https://www.n
 
 **Example:**
 ```xml
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
