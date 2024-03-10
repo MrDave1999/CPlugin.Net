@@ -17,8 +17,8 @@
       "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.html",
-          "hash": "lOEAZd2yb45wnO1bo4oVlpags8GtDXAzpayhH9rd+Qs="
+          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html",
+          "hash": "wbbMr3n2J2BbBBy4/xSZZRmS5DuHCm84/5hLUXRZZAI="
         }
       },
       "is_incremental": false,
@@ -41,8 +41,8 @@
       "source_relative_path": "api/CPlugin.Net.CPluginConfigurationBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.GetPluginPath.html",
-          "hash": "wbbMr3n2J2BbBBy4/xSZZRmS5DuHCm84/5hLUXRZZAI="
+          "relative_path": "api/CPlugin.Net.CPluginConfigurationBase.html",
+          "hash": "lOEAZd2yb45wnO1bo4oVlpags8GtDXAzpayhH9rd+Qs="
         }
       },
       "is_incremental": false,
@@ -53,8 +53,8 @@
       "source_relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.GetPluginFiles.html",
-          "hash": "lJaMMbNPIRndcMOUl4jolK2nzd2sNrSuIqnMJxcciCM="
+          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.html",
+          "hash": "x9XAAWmacJtJoSKbpf+wgf31Nk9Kcau+uGnZRxD8pzc="
         }
       },
       "is_incremental": false,
@@ -77,8 +77,8 @@
       "source_relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.html",
-          "hash": "x9XAAWmacJtJoSKbpf+wgf31Nk9Kcau+uGnZRxD8pzc="
+          "relative_path": "api/CPlugin.Net.CPluginEnvConfiguration.GetPluginFiles.html",
+          "hash": "lJaMMbNPIRndcMOUl4jolK2nzd2sNrSuIqnMJxcciCM="
         }
       },
       "is_incremental": false,
@@ -89,8 +89,8 @@
       "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.GetPluginFiles.html",
-          "hash": "YxBXhddt7RfmqaJ/k3NeNMp8c2GSUiYp9z9bnoXMwhQ="
+          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.-ctor.html",
+          "hash": "s7qxkgzwX3oUSsypKhrV/MHgnYJEHUj2B2NSbcCcYGo="
         }
       },
       "is_incremental": false,
@@ -113,8 +113,8 @@
       "source_relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.-ctor.html",
-          "hash": "s7qxkgzwX3oUSsypKhrV/MHgnYJEHUj2B2NSbcCcYGo="
+          "relative_path": "api/CPlugin.Net.CPluginJsonConfiguration.GetPluginFiles.html",
+          "hash": "YxBXhddt7RfmqaJ/k3NeNMp8c2GSUiYp9z9bnoXMwhQ="
         }
       },
       "is_incremental": false,
@@ -125,8 +125,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginAttribute.html",
-          "hash": "ZDvTscJjEUpSiC/r7iyNNhJ1eDfZlBr51OaKf14+mJw="
+          "relative_path": "api/CPlugin.Net.PluginAttribute.PluginType.html",
+          "hash": "ZQFXWMYP42dmMQRvLtHzrMGLqOt1PeVfzh9610adJGA="
         }
       },
       "is_incremental": false,
@@ -149,8 +149,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginAttribute.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginAttribute.PluginType.html",
-          "hash": "ZQFXWMYP42dmMQRvLtHzrMGLqOt1PeVfzh9610adJGA="
+          "relative_path": "api/CPlugin.Net.PluginAttribute.html",
+          "hash": "ZDvTscJjEUpSiC/r7iyNNhJ1eDfZlBr51OaKf14+mJw="
         }
       },
       "is_incremental": false,
@@ -161,8 +161,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginLoader.html",
-          "hash": "wi2AmLU+5Lb+mu/MwGWEHms6b+QDa7OAglVk5loivUY="
+          "relative_path": "api/CPlugin.Net.PluginLoader.Assemblies.html",
+          "hash": "QHkAlWiBHkHwY0itw+6hUxFVH02v7yDwqkAybq2Xtpg="
         }
       },
       "is_incremental": false,
@@ -185,20 +185,8 @@
       "source_relative_path": "api/CPlugin.Net.PluginLoader.yml",
       "output": {
         ".html": {
-          "relative_path": "api/CPlugin.Net.PluginLoader.Assemblies.html",
-          "hash": "QHkAlWiBHkHwY0itw+6hUxFVH02v7yDwqkAybq2Xtpg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/CPlugin.Net.TypeFinder.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/CPlugin.Net.TypeFinder.FindSubtypesOf.html",
-          "hash": "Fr7YNZRgALvvDNdZTjtd5E+u1RVP9fxrTd3pHbMzEg4="
+          "relative_path": "api/CPlugin.Net.PluginLoader.html",
+          "hash": "wi2AmLU+5Lb+mu/MwGWEHms6b+QDa7OAglVk5loivUY="
         }
       },
       "is_incremental": false,
@@ -211,6 +199,18 @@
         ".html": {
           "relative_path": "api/CPlugin.Net.TypeFinder.html",
           "hash": "zvFGhJg+1GFZz2F46mfCbqL26B68LgpjjFNmU2V1Ot4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CPlugin.Net.TypeFinder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CPlugin.Net.TypeFinder.FindSubtypesOf.html",
+          "hash": "Fr7YNZRgALvvDNdZTjtd5E+u1RVP9fxrTd3pHbMzEg4="
         }
       },
       "is_incremental": false,
@@ -246,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "dGcxsw7UDtIBbuSjViS57jo5uKy5NHn/rFzIx447WZY="
+          "hash": "TaJ/BmanI6k1P4XFZJKHZoNuwu/7qTkWf90WmI3+884="
         }
       },
       "is_incremental": false,
@@ -278,13 +278,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 1,
-          "skipped_file_count": 1
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 7,
-          "skipped_file_count": 5
+          "skipped_file_count": 7
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

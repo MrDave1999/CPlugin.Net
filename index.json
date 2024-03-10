@@ -92,6 +92,6 @@
   "index.html": {
     "href": "index.html",
     "title": "CPlugin.Net | CPlugin.Net",
-    "keywords": "CPlugin.Net A simple library that allows to implement a plugin-based architecture. It also includes a PluginAttribute type to be used by plugins."
+    "keywords": "CPlugin.Net A simple library that helps to implement a plugin-based architecture. It also includes a PluginAttribute type to be used by plugins. The purpose of this library is to provide a way to load plugins from a configuration file such as settings.json or .env, to facilitate the exchange of dependencies without having to make changes to the host application."
   }
 }
