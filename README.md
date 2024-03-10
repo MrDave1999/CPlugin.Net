@@ -11,7 +11,9 @@
 
 [![CPlugin.Net-logo](https://raw.githubusercontent.com/MrDave1999/CPlugin.Net/bd7e7c8787e5a1b4987cd5a506e680261dce19b0/plugin-logo.png)](https://github.com/MrDave1999/CPlugin.Net)
 
-A simple library that allows to implement a plugin-based architecture.
+A simple library that helps to implement a plugin-based architecture.
+
+The purpose of this library is to provide a way to load plugins from a configuration file such as settings.json or .env, to facilitate the exchange of dependencies without having to make changes to the host application.
 
 See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.html) for more information on this project.
 
@@ -58,6 +60,7 @@ This library contains these features:
 This library contains these limitations:
 - The plugin loader is not thread-safe.
 - There is no support for unload plugins.
+- The subtype that implements the contract must have a constructor without parameters.
 
 ## Why did I create this library?
 
@@ -92,8 +95,8 @@ In a production environment you should use a real provider such as Twilio and Se
 But in a development environment you will want to use a fake provider such as a console logger. The purpose is to avoid having to make configurations to use Twilio and SendGrid when starting development.
 
 You could create two plugin projects called:
-- [Plugin.Twilio.WhatsApp](https://github.com/DentallApp/back-end/tree/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Plugins/TwilioWhatsApp)
-- [Plugin.SendGrid.Email](https://github.com/DentallApp/back-end/tree/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Plugins/SendGrid)
+- [Plugin.Twilio.WhatsApp](https://github.com/DentallApp/back-end/tree/dev/src/Plugins/TwilioWhatsApp)
+- [Plugin.SendGrid.Email](https://github.com/DentallApp/back-end/tree/dev/src/Plugins/SendGrid)
 
 And load it from a configuration file, such as:
 ```json
@@ -106,17 +109,17 @@ And load it from a configuration file, such as:
 ```
 
 In your host application you can create two fake providers:
-- [FakeEmailService](https://github.com/DentallApp/back-end/blob/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Infrastructure/Services/FakeEmailService.cs)
-- [FakeInstantMessaging](https://github.com/DentallApp/back-end/blob/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/Infrastructure/Services/FakeInstantMessaging.cs) 
+- [FakeEmailService](https://github.com/DentallApp/back-end/blob/dev/src/Infrastructure/Services/FakeEmailService.cs)
+- [FakeInstantMessaging](https://github.com/DentallApp/back-end/blob/dev/src/Infrastructure/Services/FakeInstantMessaging.cs) 
 
 Since the host application does not have a direct reference to these plugins, it can load them dynamically. 
-Therefore, if the host application does not load these two plugins, [it may decide to use a fake provider as a console logger](https://github.com/DentallApp/back-end/blob/8dfbeefc5e242ba6933e03f3fdd4b1d2fbcc7b55/src/HostApplication/PluginStartup.cs#L19-L21). 
+Therefore, if the host application does not load these two plugins, [it may decide to use a fake provider as a console logger.](https://github.com/DentallApp/back-end/blob/24c2b30761daf10f34d5865c62a1b17827bc22ef/src/HostApplication/PluginStartup.cs#L24-L26) 
 
 Thanks to the plugin-based architecture, you can easily swap modules without having to make any changes to the host application.
 
-This promotes the [Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), since if you want to add a new email provider such as [Mailgun](https://www.mailgun.com), you can do so without having to modify the existing code. Amazing, right? 
+This promotes the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle), since if you want to add a new email provider such as [Mailgun](https://www.mailgun.com), you can do so without having to modify the existing code. You just need to change the email provider from the configuration file and that's it. Amazing, right?
 
-> This real scenario has been applied in this [project](https://github.com/DentallApp/back-end/tree/dev/src).
+> See this [repository](https://github.com/DentallApp/back-end/tree/dev/src) for an example.
 
 ### Technical challenges
 
