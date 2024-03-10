@@ -11,4 +11,6 @@
 
 [![CPlugin.Net-logo](https://raw.githubusercontent.com/MrDave1999/CPlugin.Net/bd7e7c8787e5a1b4987cd5a506e680261dce19b0/plugin-logo.png)](https://github.com/MrDave1999/CPlugin.Net)
 
-A simple library that allows to implement a plugin-based architecture. It also includes a `PluginAttribute` type to be used by plugins.
+A simple library that helps to implement a plugin-based architecture. It also includes a [PluginAttribute](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.PluginAttribute.html) type to be used by plugins.
+
+The purpose of this library is to provide a way to load plugins from a configuration file such as settings.json or .env, to facilitate the exchange of dependencies without having to make changes to the host application.
