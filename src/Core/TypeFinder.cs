@@ -55,9 +55,9 @@ public static class TypeFinder
             var pluginAttributes = assembly.GetCustomAttributes<PluginAttribute>();
             foreach (PluginAttribute pluginAttribute in pluginAttributes)
             {
-                Type type = pluginAttribute.PluginType;
-                if (typeof(TSupertype).IsAssignableFrom(type))
-                    yield return (TSupertype)Activator.CreateInstance(type);
+                Type implementationType = pluginAttribute.PluginType;
+                if (typeof(TSupertype).IsAssignableFrom(implementationType))
+                    yield return (TSupertype)Activator.CreateInstance(implementationType);
             }
         }
     }
