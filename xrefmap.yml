@@ -97,6 +97,27 @@ references:
   commentId: Overload:CPlugin.Net.CPluginJsonConfiguration.GetPluginFiles
   fullName: CPlugin.Net.CPluginJsonConfiguration.GetPluginFiles
   nameWithType: CPluginJsonConfiguration.GetPluginFiles
+- uid: CPlugin.Net.CPluginServiceCollectionExtensions
+  name: CPluginServiceCollectionExtensions
+  href: api/CPlugin.Net.CPluginServiceCollectionExtensions.html
+  commentId: T:CPlugin.Net.CPluginServiceCollectionExtensions
+  fullName: CPlugin.Net.CPluginServiceCollectionExtensions
+  nameWithType: CPluginServiceCollectionExtensions
+- uid: CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf*
+  name: AddSubtypesOf
+  href: api/CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf.html
+  commentId: Overload:CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf
+  fullName: CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf
+  nameWithType: CPluginServiceCollectionExtensions.AddSubtypesOf
+- uid: CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  name: AddSubtypesOf<TSupertype>(IServiceCollection, ServiceLifetime)
+  href: api/CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf.html#CPlugin_Net_CPluginServiceCollectionExtensions_AddSubtypesOf__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  commentId: M:CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  name.vb: AddSubtypesOf(Of TSupertype)(IServiceCollection, ServiceLifetime)
+  fullName: CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf<TSupertype>(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  fullName.vb: CPlugin.Net.CPluginServiceCollectionExtensions.AddSubtypesOf(Of TSupertype)(Microsoft.Extensions.DependencyInjection.IServiceCollection, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  nameWithType: CPluginServiceCollectionExtensions.AddSubtypesOf<TSupertype>(IServiceCollection, ServiceLifetime)
+  nameWithType.vb: CPluginServiceCollectionExtensions.AddSubtypesOf(Of TSupertype)(IServiceCollection, ServiceLifetime)
 - uid: CPlugin.Net.PluginAttribute
   name: PluginAttribute
   href: api/CPlugin.Net.PluginAttribute.html
