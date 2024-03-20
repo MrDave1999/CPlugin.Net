@@ -137,7 +137,7 @@ public class CPluginServiceCollectionExtensionsTests
         var services = new ServiceCollection();
         var assemblies = new[]
         {
-            typeof(TypeFinderTests).Assembly
+            typeof(CPluginServiceCollectionExtensionsTests).Assembly
         };
         var serviceLifetime = ServiceLifetime.Transient;
 
