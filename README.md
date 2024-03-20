@@ -55,13 +55,13 @@ This library contains these features:
 - Gets full paths of plugins (plugin locator).
 - It is able to create the instance of the type that implements the contract (a contract previously used by the plugin).
 - A logger indicating that the plugin was successfully loaded.
+- Integration with the [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection) package.
 
 ## Limitations
 
 This library contains these limitations:
 - The plugin loader is not thread-safe.
 - There is no support for unload plugins.
-- The subtype that implements the contract must have a constructor without parameters.
 
 ## Why did I create this library?
 
@@ -114,7 +114,7 @@ In your host application you can create two fake providers:
 - [FakeInstantMessaging](https://github.com/DentallApp/back-end/blob/dev/src/Infrastructure/Services/FakeInstantMessaging.cs) 
 
 Since the host application does not have a direct reference to these plugins, it can load them dynamically. 
-Therefore, if the host application does not load these two plugins, [it may decide to use a fake provider as a console logger.](https://github.com/DentallApp/back-end/blob/24c2b30761daf10f34d5865c62a1b17827bc22ef/src/HostApplication/PluginStartup.cs#L24-L26) 
+Therefore, if the host application does not load these two plugins, [it may decide to use a fake provider as a console logger.](https://github.com/DentallApp/back-end/blob/d89dde8c91d6e6d17698f0cc3315137cfa81e662/src/HostApplication/PluginStartup.cs#L17-L19) 
 
 Thanks to the plugin-based architecture, you can easily swap modules without having to make any changes to the host application.
 
@@ -357,6 +357,8 @@ The [TypeFinder](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.TypeFi
 See this thread for more information: [Add support for dependency injection via constructor](https://github.com/MrDave1999/CPlugin.Net/issues/32)
 
 **Example:**
+
+The extension method called [AddSubtypesOf](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.CPluginServiceCollectionExtensions.html) must be invoked after loading the plugins.
 ```cs
 var configurationRoot = new ConfigurationBuilder()
     .AddJsonFile("./appsettings.json")
