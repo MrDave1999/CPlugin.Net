@@ -5,6 +5,6 @@
 public class ServiceController
 {
     [HttpGet]
-    public ActionResult<string> Get(ITestService service)
-        => service.Execute();
+    public ActionResult<string> Get(IEnumerable<ITestService> services)
+        => services.First().Execute();
 }
