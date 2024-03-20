@@ -26,7 +26,7 @@ public class CPluginServiceCollectionExtensionsTests
     [TestCase(ServiceLifetime.Singleton)]
     [TestCase(ServiceLifetime.Transient)]
     [TestCase(ServiceLifetime.Scoped)]
-    public void AddSubtypesOf_WhenSubtypesArePresent_ShouldAddsSubtypesToServiceCollection(
+    public void AddSubtypesOf_WhenSupertypeHasSubtypes_ShouldAddsSubtypesToServiceCollection(
         ServiceLifetime serviceLifetime)
     {
         // Arrange

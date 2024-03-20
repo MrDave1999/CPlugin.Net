@@ -24,7 +24,7 @@ public class Runner2 : IRunner
 public class TypeFinderTests
 {
     [Test]
-    public void FindSubtypesOf_WhenSubtypesArePresent_ShouldReturnsInstancesOfSubtypes()
+    public void FindSubtypesOf_WhenSupertypeHasSubtypes_ShouldReturnsInstancesOfSubtypes()
     {
         // Arrange
         var assemblies = new[]
