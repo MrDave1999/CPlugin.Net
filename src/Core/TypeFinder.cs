@@ -28,9 +28,6 @@ public static class TypeFinder
     /// or if no assembly uses <see cref="PluginAttribute"/>.
     /// <para>This method never returns <c>null</c>.</para>
     /// </returns>
-    /// <exception cref="ArgumentNullException">
-    /// <c>assemblies</c> is <c>null</c>.
-    /// </exception>
     public static IEnumerable<TSupertype> FindSubtypesOf<TSupertype>() where TSupertype : class
         => FindSubtypesOf<TSupertype>(PluginLoader.Assemblies);
 
@@ -55,9 +52,9 @@ public static class TypeFinder
             var pluginAttributes = assembly.GetCustomAttributes<PluginAttribute>();
             foreach (PluginAttribute pluginAttribute in pluginAttributes)
             {
-                Type type = pluginAttribute.PluginType;
-                if (typeof(TSupertype).IsAssignableFrom(type))
-                    yield return (TSupertype)Activator.CreateInstance(type);
+                Type implementationType = pluginAttribute.PluginType;
+                if (typeof(TSupertype).IsAssignableFrom(implementationType))
+                    yield return (TSupertype)Activator.CreateInstance(implementationType);
             }
         }
     }

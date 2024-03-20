@@ -30,4 +30,5 @@ jobs:
         dotnet build ./samples/Plugins/PersonPlugin/Example.PersonPlugin.csproj -c Release
         dotnet build ./samples/Plugins/JsonPlugin/Example.JsonPlugin.csproj -c Release
         dotnet build ./samples/Plugins/OldJsonPlugin/Example.OldJsonPlugin.csproj -c Release
+        dotnet build ./samples/Plugins/DependencyInjectionPlugin/Example.DependencyInjectionPlugin.csproj -c Release
         dotnet test ./samples/Test/Example.Test.csproj -c Release
