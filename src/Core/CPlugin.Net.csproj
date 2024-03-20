@@ -19,7 +19,7 @@
     <Description>
       A simple library that allows to implement a plugin-based architecture.
     </Description>
-    <Version>1.1.0-preview.1</Version>
+    <Version>1.1.0</Version>
     <PackageReleaseNotes>See https://github.com/MrDave1999/CPlugin.Net/releases</PackageReleaseNotes>
   </PropertyGroup>
 
