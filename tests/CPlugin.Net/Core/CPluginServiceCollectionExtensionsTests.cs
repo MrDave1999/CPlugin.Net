@@ -39,9 +39,8 @@ public class CPluginServiceCollectionExtensionsTests
 
         // Act
         services.AddSubtypesOf<IServiceTest>(assemblies, serviceLifetime);
-        var testingServices = services
-            .BuildServiceProvider()
-            .GetServices<IServiceTest>();
+        using var serviceProvider = services.BuildServiceProvider();
+        var testingServices = serviceProvider.GetServices<IServiceTest>();
 
         int[] values = testingServices
             .Select(service => service.Execute())
@@ -82,9 +81,8 @@ public class CPluginServiceCollectionExtensionsTests
 
         // Act
         services.AddSubtypesOf<ServiceTestAbstract>(assemblies, serviceLifetime);
-        var testingServices = services
-            .BuildServiceProvider()
-            .GetServices<ServiceTestAbstract>();
+        using var serviceProvider = services.BuildServiceProvider();
+        var testingServices = serviceProvider.GetServices<ServiceTestAbstract>();
 
         // Assert
         testingServices.Should().BeEmpty();
@@ -100,9 +98,8 @@ public class CPluginServiceCollectionExtensionsTests
 
         // Act
         services.AddSubtypesOf<IServiceTest>(assemblies, serviceLifetime);
-        var testingServices = services
-            .BuildServiceProvider()
-            .GetServices<IServiceTest>();
+        using var serviceProvider = services.BuildServiceProvider();
+        var testingServices = serviceProvider.GetServices<IServiceTest>();
 
         // Assert
         testingServices.Should().BeEmpty();
@@ -122,9 +119,8 @@ public class CPluginServiceCollectionExtensionsTests
 
         // Act
         services.AddSubtypesOf<IServiceTest>(assemblies, serviceLifetime);
-        var testingServices = services
-            .BuildServiceProvider()
-            .GetServices<IServiceTest>();
+        using var serviceProvider = services.BuildServiceProvider();
+        var testingServices = serviceProvider.GetServices<IServiceTest>();
 
         // Assert
         testingServices.Should().BeEmpty();
@@ -143,9 +139,8 @@ public class CPluginServiceCollectionExtensionsTests
 
         // Act
         services.AddSubtypesOf<ServiceTestBase>(assemblies, serviceLifetime);
-        var testingServices = services
-            .BuildServiceProvider()
-            .GetServices<ServiceTestBase>();
+        using var serviceProvider = services.BuildServiceProvider();
+        var testingServices = serviceProvider.GetServices<ServiceTestBase>();
 
         // Assert
         testingServices.Should().HaveCount(1);
