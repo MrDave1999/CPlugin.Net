@@ -33,6 +33,7 @@ See the [API documentation](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin
   - [Get the loaded assemblies](#get-the-loaded-assemblies)
   - [Communication between host application and plugins](#communication-between-host-application-and-plugins)
   - [Search for subtypes that implement the contract](#search-for-subtypes-that-implement-the-contract)
+  - [Integration with Microsoft.Extensions.DependencyInjection](#integration-with-microsoftextensionsdependencyinjection)
   - [Apply PluginAttribute type to plugins](#apply-pluginattribute-type-to-plugins)
   - [Creation of a Directory.Build.props file](#creation-of-a-directorybuildprops-file)
     - [Configuration](#configuration)
@@ -348,6 +349,31 @@ foreach(ICommand command in commands)
 `FindSubtypesOf` method will search for the subtypes of `ICommand` in each plugin that has been loaded; if no subtype is found, it returns an empty enumerable.
 
 For this method to work correctly, each plugin must use the [PluginAttribute](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.PluginAttribute.html) type to specify the subtypes. This is mandatory because the `TypeFinder` type creates the instances of the subtypes using this attribute.
+
+### Integration with Microsoft.Extensions.DependencyInjection
+
+The [TypeFinder](https://mrdave1999.github.io/CPlugin.Net/api/CPlugin.Net.TypeFinder.html) type is limited: it does not support dependency injection via constructor. So if the implementation of `ICommand` has a constructor with dependencies you will get a runtime exception that the subtype does not have a parameterless constructor.
+
+See this thread for more information: [Add support for dependency injection via constructor](https://github.com/MrDave1999/CPlugin.Net/issues/32)
+
+**Example:**
+```cs
+var configurationRoot = new ConfigurationBuilder()
+    .AddJsonFile("./appsettings.json")
+    .Build();
+var jsonConfiguration = new CPluginJsonConfiguration(configurationRoot);
+PluginLoader.Load(jsonConfiguration);
+
+var services = new ServiceCollection();
+services.AddSubtypesOf<ICommand>(ServiceLifetime.Transient);
+
+using var serviceProvider = services.BuildServiceProvider();
+IEnumerable<ICommand> commands = serviceProvider.GetServices<ICommand>();
+foreach(ICommand command in commands)
+{
+    command.Execute();
+}
+```
 
 ### Apply PluginAttribute type to plugins
 
