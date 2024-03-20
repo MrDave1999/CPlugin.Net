@@ -102,4 +102,23 @@ public class Get
         result.IsSuccess.Should().BeTrue();
         result.Data.Should().HaveCount(expectedWeatherForecast);
     }
+
+    [Test]
+    public async Task Get_WhenServiceNameIsObtained_ShouldReturnsHttpStatusCodeOk()
+    {
+        // Arrange
+        using var factory = new WebApplicationFactory<Program>();
+        var client = factory.CreateClient();
+        var expectedServiceName = "TestService";
+
+        // Act
+        var httpResponse = await client.GetAsync("/Service");
+        var result = await httpResponse
+            .Content
+            .ReadAsStringAsync();
+
+        // Asserts
+        httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
+        result.Should().Be(expectedServiceName);
+    }
 }
