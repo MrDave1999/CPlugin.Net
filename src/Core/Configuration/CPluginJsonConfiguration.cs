@@ -30,9 +30,7 @@ public class CPluginJsonConfiguration : CPluginConfigurationBase
     /// </exception>
     public CPluginJsonConfiguration(IConfiguration configuration)
     {
-        if(configuration is null) 
-            throw new ArgumentNullException(nameof(configuration));
-
+        ArgumentNullException.ThrowIfNull(configuration);
         _configuration = configuration;
     }
 

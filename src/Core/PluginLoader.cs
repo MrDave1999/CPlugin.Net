@@ -31,8 +31,7 @@ public static class PluginLoader
     /// </exception>
     public static void Load(CPluginConfigurationBase configuration)
     {
-        if (configuration is null)
-            throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
 
         var assemblyFiles = configuration.GetPluginFiles();
         foreach (string assemblyFile in assemblyFiles)

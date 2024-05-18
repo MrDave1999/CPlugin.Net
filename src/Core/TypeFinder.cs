@@ -36,9 +36,7 @@ public static class TypeFinder
     internal static IEnumerable<TSupertype> FindSubtypesOf<TSupertype>(IEnumerable<Assembly> assemblies) 
         where TSupertype : class
     {
-        if (assemblies is null)
-            throw new ArgumentNullException(nameof(assemblies));
-
+        ArgumentNullException.ThrowIfNull(assemblies);
         return GetSubtypesOf<TSupertype>(assemblies);
     }
 

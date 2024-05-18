@@ -40,8 +40,7 @@ public static class CPluginServiceCollectionExtensions
         IEnumerable<Assembly> assemblies,
         ServiceLifetime serviceLifetime) where TSupertype : class
     {
-        if (assemblies is null)
-            throw new ArgumentNullException(nameof(assemblies));
+        ArgumentNullException.ThrowIfNull(assemblies);
 
         foreach (Assembly assembly in assemblies)
         {
