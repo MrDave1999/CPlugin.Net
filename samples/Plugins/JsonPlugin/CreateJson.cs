@@ -2,7 +2,7 @@
 
 namespace Example.JsonPlugin;
 
-public class CreateJson : ICommand
+internal class CreateJson : ICommand
 {
     public string Name => "json";
     public string Description => "Outputs JSON value.";
