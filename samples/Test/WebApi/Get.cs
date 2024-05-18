@@ -121,4 +121,23 @@ public class Get
         httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
         result.Should().Be(expectedServiceName);
     }
+
+    [Test]
+    public async Task Get_WhenSummariesAreObtained_ShouldReturnsHttpStatusCodeOk()
+    {
+        // Arrange
+        using var factory = new WebApplicationFactory<Program>();
+        var client = factory.CreateClient();
+        int expectedSummaries = 10;
+
+        // Act
+        var httpResponse = await client.GetAsync("/Summary");
+        var result = await httpResponse
+            .Content
+            .ReadFromJsonAsync<string[]>();
+
+        // Asserts
+        httpResponse.StatusCode.Should().Be(HttpStatusCode.OK);
+        result.Should().HaveCount(expectedSummaries);
+    }
 }
