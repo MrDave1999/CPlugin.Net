@@ -3,5 +3,7 @@ global using Example.Contracts;
 global using CPlugin.Net;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.ApplicationParts;
+global using Microsoft.AspNetCore.Mvc.Controllers;
 global using SimpleResults;
 global using Example.SharedEntities;
+global using Example.HostWebApi;

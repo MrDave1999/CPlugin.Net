@@ -12,6 +12,8 @@ foreach(IWebStartup startup in startups)
 }
 
 IMvcBuilder mvcBuilder = builder.Services.AddControllers();
+// This allows to register internal controllers.
+mvcBuilder.PartManager.FeatureProviders.Add(new InternalControllerFeatureProvider());
 foreach (Assembly assembly in PluginLoader.Assemblies)
 {
     // This allows to register the controllers for each loaded assembly.
@@ -28,7 +30,7 @@ builder.Services.AddSwaggerGen(options =>
     options.CustomSchemaIds(type => $"{type.Name}_{Guid.NewGuid()}");
 });
 
-var app = builder.Build();
+var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

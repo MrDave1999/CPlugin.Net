@@ -2,7 +2,7 @@
 
 namespace Example.PersonPlugin;
 
-public class Startup : IWebStartup
+internal class Startup : IWebStartup
 {
     public string Name => "person";
     public string Description => "Expose endpoints.";
