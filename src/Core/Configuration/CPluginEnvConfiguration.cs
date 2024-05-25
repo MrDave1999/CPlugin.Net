@@ -14,7 +14,7 @@ namespace CPlugin.Net;
 /// </remarks>
 public class CPluginEnvConfiguration : CPluginConfigurationBase
 {
-    private static readonly string[] s_separator = { " ", "\t", "\r\n", "\n", "\r" };
+    private static readonly string[] s_separator = [" ", "\t", "\r\n", "\n", "\r"];
 
     /// <summary>
     ///  Initializes a new instance of the <see cref="CPluginEnvConfiguration"/> class.
@@ -26,7 +26,7 @@ public class CPluginEnvConfiguration : CPluginConfigurationBase
     {
         var retrievedValue = Environment.GetEnvironmentVariable("PLUGINS");
         if(retrievedValue is null)
-            return Enumerable.Empty<string>();
+            return [];
 
         var pluginFiles = retrievedValue
             .Split(s_separator, StringSplitOptions.None)
