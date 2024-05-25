@@ -61,6 +61,7 @@ This library contains these features:
 
 This library contains these limitations:
 - There is no support for unload plugins.
+- It does not contain a CLI tool to restore plugins from external repositories.
 
 ## Why did I create this library?
 
