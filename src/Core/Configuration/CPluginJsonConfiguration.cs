@@ -41,8 +41,6 @@ public class CPluginJsonConfiguration : CPluginConfigurationBase
             .GetSection("Plugins")
             .Get<string[]>();
 
-        return values is null ? 
-            Enumerable.Empty<string>() :
-            values.Select(GetPluginPath);
+        return values is null ? [] : values.Select(GetPluginPath);
     }
 }
