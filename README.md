@@ -60,7 +60,6 @@ This library contains these features:
 ## Limitations
 
 This library contains these limitations:
-- The plugin loader is not thread-safe.
 - There is no support for unload plugins.
 
 ## Why did I create this library?
