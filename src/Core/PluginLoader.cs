@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,7 +11,7 @@ namespace CPlugin.Net;
 /// </summary>
 public static class PluginLoader
 {
-    private readonly static Dictionary<string, Assembly> s_assemblies = new();
+    private readonly static ConcurrentDictionary<string, Assembly> s_assemblies = new();
 
     /// <summary>
     /// Gets the plugin assemblies.
@@ -32,7 +33,6 @@ public static class PluginLoader
     public static void Load(CPluginConfigurationBase configuration)
     {
         ArgumentNullException.ThrowIfNull(configuration);
-
         var assemblyFiles = configuration.GetPluginFiles();
         foreach (string assemblyFile in assemblyFiles)
         {
@@ -47,7 +47,7 @@ public static class PluginLoader
         var loadContext = new PluginLoadContext(assemblyFile);
         var assemblyName = AssemblyName.GetAssemblyName(assemblyFile);
         var currentAssembly = loadContext.LoadFromAssemblyName(assemblyName);
-        s_assemblies.Add(assemblyFile, currentAssembly);
+        s_assemblies.TryAdd(assemblyFile, currentAssembly);
         PluginLogger.DefaultLogInformation(currentAssembly.GetName().Name, currentAssembly.FullName);
     }
 
