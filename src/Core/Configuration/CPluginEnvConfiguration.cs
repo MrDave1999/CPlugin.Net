@@ -21,6 +21,11 @@ public class CPluginEnvConfiguration : CPluginConfigurationBase
     /// </summary>
     public CPluginEnvConfiguration() { }
 
+    public override IEnumerable<PluginConfig> GetPluginConfigFiles()
+    {
+        throw new NotImplementedException();
+    }
+
     /// <inheritdoc />
     public override IEnumerable<string> GetPluginFiles()
     {

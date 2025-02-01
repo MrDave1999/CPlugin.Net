@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace CPlugin.Net;
 
@@ -32,6 +29,11 @@ public class CPluginJsonConfiguration : CPluginConfigurationBase
     {
         ArgumentNullException.ThrowIfNull(configuration);
         _configuration = configuration;
+    }
+
+    public override IEnumerable<PluginConfig> GetPluginConfigFiles()
+    {
+        throw new NotImplementedException();
     }
 
     /// <inheritdoc />
