@@ -11,6 +11,23 @@ namespace CPlugin.Net;
 /// <c>
 /// { "Plugins": [ "MyPlugin1.dll", "MyPlugin2.dll" ] }
 /// </c>
+/// <para>if you uses dependencies:</para>
+/// <c>
+/// {
+/// "Plugins": [
+///    {
+///       "Name": "TestProject.JsonPlugin",
+///       "DependsOn": [
+///         "TestProject.OldJsonPlugin"
+///       ]
+///     },
+///     {
+///       "Name": "TestProject.OldJsonPlugin",
+///       "DependsOn": []
+///     }
+///   ]
+/// }
+/// </c>
 /// </remarks>
 public class CPluginJsonConfiguration : CPluginConfigurationBase
 {
