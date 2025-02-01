@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CPlugin.Net.Exceptions;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,30 @@ public static class PluginLoader
             Assembly currentAssembly = FindAssembly(assemblyFile);
             if(currentAssembly is null)
                 LoadAssembly(assemblyFile);
+        }
+    }
+
+    public static void LoadPluginsWithDependencies(CPluginConfigurationBase configuration)
+    {
+        ArgumentNullException.ThrowIfNull(configuration);
+        var pluginConfigs = configuration.GetPluginConfigFiles();
+        foreach (var pluginConfig in pluginConfigs)
+        {
+            if (pluginConfig.DependsOn?.Count > 0)
+            {
+                foreach (var dependency in pluginConfig.DependsOn)
+                {
+                    if (!pluginConfigs.Any(pc => pc.Name.Contains(dependency)))
+                    {
+                        string pluginName = Path.GetFileName(pluginConfig.Name);
+                        throw new PluginNotFoundException(dependency, pluginName);
+                    }
+                }
+            }
+
+            Assembly currentAssembly = FindAssembly(pluginConfig.Name);
+            if (currentAssembly is null)
+                LoadAssembly(pluginConfig.Name);
         }
     }
 
