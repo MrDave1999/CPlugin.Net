@@ -33,7 +33,15 @@ public class CPluginJsonConfiguration : CPluginConfigurationBase
 
     public override IEnumerable<PluginConfig> GetPluginConfigFiles()
     {
-        throw new NotImplementedException();
+        var values = _configuration
+            .GetSection("Plugins")
+            .Get<PluginConfig[]>();
+
+        return values is null ? [] : values.Select(p => new PluginConfig
+        {
+            Name  = GetPluginPath(p.Name),
+            DependsOn = p.DependsOn
+        });
     }
 
     /// <inheritdoc />
