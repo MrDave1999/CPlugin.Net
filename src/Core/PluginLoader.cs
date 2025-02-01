@@ -43,7 +43,27 @@ public static class PluginLoader
         }
     }
 
+    /// <summary>
+    /// Loads plugins and their dependencies from a specified configuration source.
+    /// The plugin list can be retrieved from a JSON file, an environment variable (.env), or another configuration source.
+    /// This method ensures that all required dependencies are resolved before loading a plugin.
+    /// </summary>
+    /// <param name="configuration">
+    /// A configuration source that provides the list of plugin files and their dependencies.
+    /// </param>
+    /// <remarks>
+    /// This method is idempotent, meaning that if it is called multiple times, 
+    /// it will not reload assemblies that have already been loaded.
+    /// If a plugin depends on another plugin that is missing, a <see cref="PluginNotFoundException"/> is thrown.
+    /// </remarks>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="configuration"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="PluginNotFoundException">
+    /// Thrown when a required plugin dependency is missing.
+    /// </exception>
     public static void LoadPluginsWithDependencies(CPluginConfigurationBase configuration)
+
     {
         ArgumentNullException.ThrowIfNull(configuration);
         var pluginConfigs = configuration.GetPluginConfigFiles();

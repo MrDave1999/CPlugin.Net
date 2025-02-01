@@ -158,6 +158,7 @@ public class PluginLoaderTests
         // Act
         PluginLoader.LoadPluginsWithDependencies(envConfiguration);
 
+        // Assert
         AppDomain
             .CurrentDomain
             .GetAssemblies()
