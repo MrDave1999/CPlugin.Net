@@ -11,7 +11,7 @@ namespace CPlugin.Net;
 /// <c>
 /// { "Plugins": [ "MyPlugin1.dll", "MyPlugin2.dll" ] }
 /// </c>
-/// <para>if you uses dependencies:</para>
+/// <para>if you have plugins with dependencies, you can do this:</para>
 /// <c>
 /// {
 /// "Plugins": [
