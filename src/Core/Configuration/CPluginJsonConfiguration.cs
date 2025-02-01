@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace CPlugin.Net;
 
@@ -13,6 +10,23 @@ namespace CPlugin.Net;
 /// <para>Example:</para>
 /// <c>
 /// { "Plugins": [ "MyPlugin1.dll", "MyPlugin2.dll" ] }
+/// </c>
+/// <para>if you have plugins with dependencies, you can do this:</para>
+/// <c>
+/// {
+/// "Plugins": [
+///    {
+///       "Name": "TestProject.JsonPlugin",
+///       "DependsOn": [
+///         "TestProject.OldJsonPlugin"
+///       ]
+///     },
+///     {
+///       "Name": "TestProject.OldJsonPlugin",
+///       "DependsOn": []
+///     }
+///   ]
+/// }
 /// </c>
 /// </remarks>
 public class CPluginJsonConfiguration : CPluginConfigurationBase
@@ -32,6 +46,19 @@ public class CPluginJsonConfiguration : CPluginConfigurationBase
     {
         ArgumentNullException.ThrowIfNull(configuration);
         _configuration = configuration;
+    }
+
+    public override IEnumerable<PluginConfig> GetPluginConfigFiles()
+    {
+        var values = _configuration
+            .GetSection("Plugins")
+            .Get<PluginConfig[]>();
+
+        return values is null ? [] : values.Select(p => new PluginConfig
+        {
+            Name  = GetPluginPath(p.Name),
+            DependsOn = p.DependsOn
+        });
     }
 
     /// <inheritdoc />

@@ -1,0 +1,14 @@
+{
+  "Plugins": [
+    {
+      "Name": "TestProject.JsonPlugin",
+      "DependsOn": [
+        "TestProject.OldJsonPlugin"
+      ]
+    },
+    {
+      "Name": "TestProject.OldJsonPlugin",
+      "DependsOn": []
+    }
+  ]
+}

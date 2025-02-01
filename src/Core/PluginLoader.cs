@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CPlugin.Net.Exceptions;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,50 @@ public static class PluginLoader
             Assembly currentAssembly = FindAssembly(assemblyFile);
             if(currentAssembly is null)
                 LoadAssembly(assemblyFile);
+        }
+    }
+
+    /// <summary>
+    /// Loads plugins and their dependencies from a specified configuration source.
+    /// The plugin list can be retrieved from a JSON file, an environment variable (.env), or another configuration source.
+    /// This method ensures that all required dependencies are resolved before loading a plugin.
+    /// </summary>
+    /// <param name="configuration">
+    /// A configuration source that provides the list of plugin files and their dependencies.
+    /// </param>
+    /// <remarks>
+    /// This method is idempotent, meaning that if it is called multiple times, 
+    /// it will not reload assemblies that have already been loaded.
+    /// If a plugin depends on another plugin that is missing, a <see cref="PluginNotFoundException"/> is thrown.
+    /// </remarks>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="configuration"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="PluginNotFoundException">
+    /// Thrown when a required plugin dependency is missing.
+    /// </exception>
+    public static void LoadPluginsWithDependencies(CPluginConfigurationBase configuration)
+
+    {
+        ArgumentNullException.ThrowIfNull(configuration);
+        var pluginConfigs = configuration.GetPluginConfigFiles();
+        foreach (var pluginConfig in pluginConfigs)
+        {
+            if (pluginConfig.DependsOn?.Count > 0)
+            {
+                foreach (var dependency in pluginConfig.DependsOn)
+                {
+                    if (!pluginConfigs.Any(pc => pc.Name.Contains(dependency)))
+                    {
+                        string pluginName = Path.GetFileName(pluginConfig.Name);
+                        throw new PluginNotFoundException(dependency, pluginName);
+                    }
+                }
+            }
+
+            Assembly currentAssembly = FindAssembly(pluginConfig.Name);
+            if (currentAssembly is null)
+                LoadAssembly(pluginConfig.Name);
         }
     }
 

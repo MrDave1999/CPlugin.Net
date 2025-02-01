@@ -28,6 +28,24 @@ public abstract class CPluginConfigurationBase
     public abstract IEnumerable<string> GetPluginFiles();
 
     /// <summary>
+    /// Gets the full path to each plugin file from a configuration source.
+    /// </summary>
+    /// <returns>
+    /// A collection of plugin files that also contains the paths;
+    /// <para>or</para>
+    /// Returns an empty enumerable when the plugin files could not be obtained.
+    /// <para>This method never returns <c>null</c>.</para>
+    /// </returns>
+    /// <remarks>
+    /// Plugin files must be in the <c>plugins</c> directory of the current directory 
+    /// where the host application is running.
+    /// <para>Each plugin file must have a <c>.dll</c> extension and must be in its own directory.</para>
+    /// <para>Example:</para>
+    /// <c>/HostApp/bin/Debug/net7.0/plugins/MyPlugin1/MyPlugin1.dll</c>
+    /// </remarks>
+    public abstract IEnumerable<PluginConfig> GetPluginConfigFiles();
+
+    /// <summary>
     /// Gets the full path of a plugin file.
     /// </summary>
     /// <remarks>

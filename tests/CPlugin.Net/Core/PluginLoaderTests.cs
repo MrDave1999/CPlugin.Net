@@ -1,4 +1,6 @@
-﻿namespace CPlugin.Net.Tests.Core;
+﻿using CPlugin.Net.Exceptions;
+
+namespace CPlugin.Net.Tests.Core;
 
 public class PluginLoaderTests
 {
@@ -78,5 +80,110 @@ public class PluginLoaderTests
             .Count()
             .Should()
             .Be(expectedAssemblies);
+    }
+
+    [Test]
+    public void LoadPluginsWithDependencies_WhenPluginsAreFound_ShouldBeLoadedIntoMemory()
+    {
+        // Arrange
+        var value =
+        """
+        TestProject.OldJsonPlugin.dll->TestProject.JsonPlugin.dll
+        TestProject.JsonPlugin.dll
+        """;
+        Environment.SetEnvironmentVariable("PLUGINS", value);
+        var envConfiguration = new CPluginEnvConfiguration();
+        int expectedAssemblies = 2;
+
+        // Act
+        PluginLoader.LoadPluginsWithDependencies(envConfiguration);
+
+        AppDomain
+            .CurrentDomain
+            .GetAssemblies()
+            .Where(assembly => assembly.GetName().Name == "TestProject.OldJsonPlugin" 
+                || assembly.GetName().Name == "TestProject.JsonPlugin")
+            .Count()
+            .Should()
+            .Be(expectedAssemblies);
+    }
+
+    [Test]
+    public void LoadPluginsWithDependencies_WhenPluginsAreIndependent_ShouldBeLoadedIntoMemory()
+    {
+        // Arrange
+        var value =
+        """
+        TestProject.OldJsonPlugin.dll
+        TestProject.JsonPlugin.dll
+        """;
+        Environment.SetEnvironmentVariable("PLUGINS", value);
+        var envConfiguration = new CPluginEnvConfiguration();
+        int expectedAssemblies = 2;
+
+        // Act
+        PluginLoader.LoadPluginsWithDependencies(envConfiguration);
+
+        AppDomain
+            .CurrentDomain
+            .GetAssemblies()
+            .Where(assembly => assembly.GetName().Name == "TestProject.OldJsonPlugin"
+                || assembly.GetName().Name == "TestProject.JsonPlugin")
+            .Count()
+            .Should()
+            .Be(expectedAssemblies);
+    }
+
+    [Test]
+    public void LoadPluginsWithDependencies_WhenPluginsHaveMultipleDependencies_ShouldBeLoaded()
+    {
+        // Arrange
+        List<string> plugins = 
+        [
+            "TestProject.OldJsonPlugin",
+            "TestProject.JsonPlugin",
+            "TestProject.HelloPlugin"
+        ];
+
+        var value =
+        """
+        TestProject.OldJsonPlugin.dll
+        TestProject.JsonPlugin.dll->TestProject.OldJsonPlugin.dll,TestProject.HelloPlugin.dll
+        TestProject.HelloPlugin.dll
+        """;
+        Environment.SetEnvironmentVariable("PLUGINS", value);
+        var envConfiguration = new CPluginEnvConfiguration();
+        int expectedAssemblies = 3;
+
+        // Act
+        PluginLoader.LoadPluginsWithDependencies(envConfiguration);
+
+        // Assert
+        AppDomain
+            .CurrentDomain
+            .GetAssemblies()
+            .Where(assembly => plugins.Contains(assembly.GetName().Name))
+            .Count()
+            .Should()
+            .Be(expectedAssemblies);
+    }
+
+    [Test]
+    public void LoadPluginsWithDependencies_WhenDependencyIsNotFound_ShouldThrowPluginNotFoundException()
+    {
+        // Arrange
+        var dependentPlugin = "TestProject.JsonPlugin.dll";
+        var missingPlugin = "TestProject.OldJsonPlugin.dll";
+        var value = $"{dependentPlugin}->{missingPlugin}";
+        Environment.SetEnvironmentVariable("PLUGINS", value);
+        var envConfiguration = new CPluginEnvConfiguration();
+
+        // Act
+        Action act = () => PluginLoader.LoadPluginsWithDependencies(envConfiguration);
+
+        // Assert
+        act.Should()
+           .Throw<PluginNotFoundException>()
+           .WithMessage($"The plugin '{dependentPlugin}' depends on '{missingPlugin}', but '{missingPlugin}' was not found.");
     }
 }

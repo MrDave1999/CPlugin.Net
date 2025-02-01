@@ -80,6 +80,34 @@ public class CPluginJsonConfigurationTests
     }
 
     [Test]
+    public void GetPluginConfigFiles_WhenPluginFilesArePresent_ShouldReturnsFullPaths()
+    {
+        // Arrange
+        var configurationRoot = new ConfigurationBuilder()
+            .AddJsonFile("./Resources/settingsWithDependencies.json")
+            .Build();
+        var jsonConfiguration = new CPluginJsonConfiguration(configurationRoot);
+        var basePath = AppContext.BaseDirectory;
+        PluginConfig[] expectedPaths =
+        [
+            new PluginConfig
+            {
+                Name = Path.Combine(basePath, "plugins", "TestProject.OldJsonPlugin", "TestProject.OldJsonPlugin.dll"),
+                DependsOn = []
+            },
+            new PluginConfig
+            {
+                Name = Path.Combine(basePath, "plugins", "TestProject.JsonPlugin", "TestProject.JsonPlugin.dll"),
+                DependsOn = ["TestProject.OldJsonPlugin"]
+            },
+        ];
+        // Act
+        var actual = jsonConfiguration.GetPluginConfigFiles().ToList();
+        // Assert
+        actual.Should().BeEquivalentTo(expectedPaths);
+    }
+
+    [Test]
     public void Constructor_WhenArgumentIsNull_ShouldThrowArgumentNullException()
     {
         // Arrange
